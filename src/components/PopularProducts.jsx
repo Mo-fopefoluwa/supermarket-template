@@ -7,7 +7,7 @@ const PopularProducts = () => {
   const { mode } = context;
 
   return (
-    <div className="px-[1rem] md:px-[2rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
+    <div className="px-[2rem] md:px-[3rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
       <div className="flex flex-row justify-between items-center">
         <h2
           style={{ color: mode === "dark" ? "white" : "" }}
@@ -21,7 +21,7 @@ const PopularProducts = () => {
       </div>
       <div
         style={{ color: mode === "dark" ? "white" : "" }}
-        className="py-8 px-4 md:px-8 grid grid-cols-2 lg:grid-cols-3 place-items-center gap-4 md:gap-16"
+        className="py-16 px-12 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16"
       >
         <div
           style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}

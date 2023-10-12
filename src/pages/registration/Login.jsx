@@ -18,7 +18,7 @@ const Login = () => {
   return (
     <div className="bg-gray-200 h-[120vh]">
       <div className="px-4 md:px-8 py-16">
-        <h1 className="text-[2rem] md:text-[2.5rem] px-4 pb-8 font-bold">
+        <h1 className="text-[1.6rem] md:text-[2.5rem] px-4 pb-8 font-bold">
           Welcome back to Our
           <br /> Online Supermarket
         </h1>
@@ -33,7 +33,7 @@ const Login = () => {
                   Email Address
                 </label>
                 <input
-                  className="w-full ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
+                  className="w-full border-2 border-gray-400 ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
                   id="email"
                   type="email"
                   value={email}
@@ -50,7 +50,7 @@ const Login = () => {
 
                 <span className="relative">
                   <input
-                    className="w-full relative ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
+                    className="w-full border-2 border-gray-400 relative ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
                     id="password"
                     type={passwordType}
                     value={password}

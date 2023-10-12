@@ -12,7 +12,7 @@ const Hero = () => {
         className="bg-[#b9fd99] flex flex-row justify-between items-center px-4 md:px-[4rem] rounded-md h-[250px] md:h-[400px]"
       >
         <div className="flex flex-col justify-center w-[60%] md:w-[50%]">
-          <h1 className="text-[1.8rem] md:text-[2.4rem] lg:text-[2.8rem] leading-[2rem] md:leading-[2.4rem] lg:leading-[3rem] font-extrabold">
+          <h1 className="text-[1.4rem] md:text-[2rem] lg:text-[2.4rem] xl:text-[2.8rem] leading-[2rem] md:leading-[2.4rem] lg:leading-[3rem] font-extrabold">
             Order your <br /> Daily Groceries
           </h1>
           <p
@@ -21,7 +21,7 @@ const Hero = () => {
           >
             #Free Delivery
           </p>
-          <div className="flex flex-row items-center">
+          <div className="md:flex hidden flex-row items-center">
             <input
               className="px-8 w-[100%] text-[.8rem] md:text-[1rem] focus:outline-none py-[.3rem] md:py-[.6rem] rounded-full"
               type="text"

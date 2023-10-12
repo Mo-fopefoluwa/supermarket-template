@@ -7,13 +7,13 @@ const PopularBundle = () => {
   const { mode } = context;
 
   return (
-    <div className="px-0 md:px-[2rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
+    <div className="px-0 md:px-[3rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
       <div
         style={{ backgroundColor: mode === "dark" ? "#76c750" : "" }}
         className="bg-[#b9fd99] py-8 px-2 md:px-6 md:rounded-[2rem]"
       >
         <h2 className="font-semibold text-[1.6rem]">Popular Bundle Pack</h2>
-        <div className="py-8 px-4 md:px-8 grid grid-cols-2 lg:grid-cols-3 place-items-center gap-4 lg:gap-16">
+        <div className="py-16 px-16 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 lg:gap-16">
           <div className="w-full h-full flex flex-col gap-2 bg-white rounded-xl shadow-sm px-4 md:px-6 py-6 md:py-8">
             <span className=" w-full h-[150px]">
               <img

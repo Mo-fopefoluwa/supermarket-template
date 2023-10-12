@@ -19,12 +19,12 @@ const Signup = () => {
   return (
     <div className="bg-gray-200 h-[110vh]">
       <div className="px-4 md:px-8 py-16">
-        <h1 className="text-[2rem] md:text-[2.5rem] px-4 md:px-12 lg:px-20 pb-8 font-bold">
+        <h1 className="text-[1.6rem] md:text-[2.5rem] px-4 md:px-12 lg:px-20 pb-8 font-bold">
           Welcome to Our
           <br /> Online Supermarket
         </h1>
         <div className="flex justify-center items-center">
-          <div className="py-6 bg-white md:w-[50%] lg:w-[40%] rounded-xl">
+          <div className="py-6 bg-white w-full md:w-[50%] lg:w-[40%] rounded-xl">
             <form className="py-12 flex flex-col px-6" action="">
               <span className="flex flex-col">
                 <label
@@ -34,7 +34,7 @@ const Signup = () => {
                   Email Address
                 </label>
                 <input
-                  className="w-full ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
+                  className="w-full border-2 border-gray-400 ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
                   id="email"
                   type="email"
                   value={email}
@@ -51,7 +51,7 @@ const Signup = () => {
 
                 <span className="relative">
                   <input
-                    className="w-full relative ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
+                    className="w-full relative border-2 border-gray-400 ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
                     id="password"
                     type={passwordType}
                     value={password}

@@ -52,10 +52,10 @@ const Navbar = () => {
             })}
           </nav>
         </div>
-        <div className="flex flex-row gap-6 justify-center items-center">
+        <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
           <LightSwitch />
           <Link to={"/cart"}>
-            <BiCart color={mode === "dark" ? "white" : ""} size={25} />
+            <BiCart color={mode === "dark" ? "white" : ""} size={28} />
           </Link>
           <Menu as="div" className="relative  inline-block text-center">
             {({ open }) => (
@@ -84,7 +84,7 @@ const Navbar = () => {
                   style={{ color: mode === "dark" ? "white" : "" }}
                   className="w-full"
                 >
-                  {open ? <IoCloseSharp size={25} /> : <HiMenuAlt1 size={25} />}
+                  {open ? <IoCloseSharp size={28} /> : <HiMenuAlt1 size={28} />}
                 </Menu.Button>
                 {open && <Nav />}
               </>
