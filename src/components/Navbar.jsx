@@ -11,6 +11,7 @@ import LightSwitch from "./LightSwitch";
 import Nav from "./Nav";
 import UserNav from "./UserNav";
 import { BiCart } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const navs = [
   { name: "home", link: "/" },
@@ -31,6 +32,7 @@ const navs = [
 const Navbar = () => {
   const context = useContext(myContext);
   const { mode } = context;
+  //const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   return (
     <div>
@@ -54,7 +56,10 @@ const Navbar = () => {
         </div>
         <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
           <LightSwitch />
-          <Link to={"/cart"}>
+          <Link className="relative" to={"/cart"}>
+            <span className="absolute bg-red-500 rounded-full right-0 top-[-1rem] flex h-[1.2rem] w-[1.2rem]">
+              {/* {cart.length} */}
+            </span>
             <BiCart color={mode === "dark" ? "white" : ""} size={28} />
           </Link>
           <Menu as="div" className="relative  inline-block text-center">

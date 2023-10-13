@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import myContext from "../../context/myContext";
 import { Link } from "react-router-dom";
-import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
+import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const Login = () => {

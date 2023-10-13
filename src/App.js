@@ -11,31 +11,40 @@ import Category from "./pages/Category";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import Packages from "./pages/Packages";
+import AddProducts from "./components/AddProducts";
+import UpdateProducts from "./components/UpdateProducts";
+import ProductInfo from "./pages/ProductInfo";
+import { CartContextProvider } from "./context/CartContext";
 
 function App() {
   return (
     <div className="App">
       <MyState>
-        <AnimatePresence>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/category" element={<Category />} />
-            <Route
-              path="/wishlist"
-              element={
-                <ProtectedRoute>
-                  <Wishlist />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/packages" element={<Packages />} />
-            <Route path="*" element={<Nopage />} />
-          </Routes>
-          <ToastContainer />
-        </AnimatePresence>
+        <CartContextProvider>
+          <AnimatePresence>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/category" element={<Category />} />
+              <Route
+                path="/wishlist"
+                element={
+                  <ProtectedRoute>
+                    <Wishlist />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/productinfo/:id" element={<ProductInfo />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/packages" element={<Packages />} />
+              <Route path="/addproduct" element={<AddProducts />} />
+              <Route path="/updateproduct" element={<UpdateProducts />} />
+              <Route path="/*" element={<Nopage />} />
+            </Routes>
+            <ToastContainer />
+          </AnimatePresence>
+        </CartContextProvider>
       </MyState>
     </div>
   );

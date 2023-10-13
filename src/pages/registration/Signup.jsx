@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
+import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import myContext from "../../context/myContext";
 

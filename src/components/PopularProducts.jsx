@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import myContext from "../context/myContext";
 import { BiLock } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const PopularProducts = () => {
   const context = useContext(myContext);
-  const { mode } = context;
+  const { mode, product } = context;
+  //const dispatch = useDispatch();
+  //const cartItems = useSelector((state) => state.cart);
+  // console.log(cartItems)
 
   return (
     <div className="px-[2rem] md:px-[3rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
@@ -15,9 +20,12 @@ const PopularProducts = () => {
         >
           Popular Products
         </h2>
-        <button className="bg-[#40aa54] text-white rounded-full w-[25%] md:w-[10%] py-1">
+        <Link
+          to={"/products"}
+          className="bg-[#40aa54] text-white flex justify-center font-semibold rounded-full w-[25%] md:w-[10%] py-1"
+        >
           See all
-        </button>
+        </Link>
       </div>
       <div
         style={{ color: mode === "dark" ? "white" : "" }}
@@ -81,9 +89,9 @@ const PopularProducts = () => {
                 +
               </button>
             </span>
-            <span className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]">
+            <button className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]">
               <BiLock color="white" size={20} />{" "}
-            </span>
+            </button>
           </span>
         </div>
         <div
@@ -210,62 +218,6 @@ const PopularProducts = () => {
             </span>
           </span>
         </div>
-        {/* <div className="w-full h-full flex flex-col gap-2 ring-1 ring-gray-300 rounded-md shadow-sm px-6 py-8">
-          <span className=" w-full h-[150px]">
-            <img
-              className="w-full h-[150px] object-fit"
-              src="image0.jpeg"
-              alt=""
-            />
-          </span>
-          <span className="">
-            <p className="font-semibold">Cabbage</p>
-            <p className="text-gray-400 mt-[-.4rem] text-[.8rem]">1kg</p>
-            <p className="font-bold pt-[.4rem] text-[1.1rem]">$13</p>
-          </span>
-          <span className="flex flex-row justify-between">
-            <span className="flex flex-row">
-              <button className="ring-1 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                -
-              </button>
-              <p className="px-3 font-bold">2</p>
-              <button className="ring-1 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                +
-              </button>
-            </span>
-            <span className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]">
-              <BiLock color="white" size={20} />{" "}
-            </span>
-          </span>
-        </div>
-        <div className="w-full h-full flex flex-col gap-2 ring-1 ring-gray-300 rounded-md shadow-sm px-6 py-8">
-          <span className=" w-full h-[150px]">
-            <img
-              className="w-full h-[150px] object-fit"
-              src="image0.jpeg"
-              alt=""
-            />
-          </span>
-          <span className="">
-            <p className="font-semibold">Cabbage</p>
-            <p className="text-gray-400 mt-[-.4rem] text-[.8rem]">1kg</p>
-            <p className="font-bold pt-[.4rem] text-[1.1rem]">$13</p>
-          </span>
-          <span className="flex flex-row justify-between">
-            <span className="flex flex-row">
-              <button className="ring-1 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                -
-              </button>
-              <p className="px-3 font-bold">2</p>
-              <button className="ring-1 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                +
-              </button>
-            </span>
-            <span className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]">
-              <BiLock color="white" size={20} />{" "}
-            </span>
-          </span>
-        </div> */}
       </div>
     </div>
   );
