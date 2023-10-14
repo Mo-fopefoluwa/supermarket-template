@@ -15,6 +15,7 @@ import AddProducts from "./components/AddProducts";
 import UpdateProducts from "./components/UpdateProducts";
 import ProductInfo from "./pages/ProductInfo";
 import { CartContextProvider } from "./context/CartContext";
+import Dashboard from "./admin/Dashboard";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path="/packages" element={<Packages />} />
               <Route path="/addproduct" element={<AddProducts />} />
               <Route path="/updateproduct" element={<UpdateProducts />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/*" element={<Nopage />} />
             </Routes>
             <ToastContainer />

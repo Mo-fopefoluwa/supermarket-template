@@ -22,6 +22,7 @@ const navs = [
 const Nav = () => {
   const context = useContext(myContext);
   const { mode } = context;
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div
@@ -54,9 +55,41 @@ const Nav = () => {
                     {link.name}
                   </Link>
                 )}
+                {user?.user?.email === "fopefaokunla@gmail.com" ? (
+                  <Link
+                    className="transition hover:text-teal-500/50"
+                    to={"/dashboard"}
+                  >
+                    Admin
+                  </Link>
+                ) : (
+                  ""
+                )}
               </Menu.Item>
             </div>
           ))}
+
+          {user?.user?.email === "fopefaokunla@gmail.com" ? (
+            <div
+              style={{ color: mode === "dark" ? "white" : "" }}
+              className="px-1 py-4 w-[100%] capitalize "
+            >
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to={"/dashboard"}
+                    className={`${
+                      active ? "bg-[#40aa54] text-white" : ""
+                    } group w-full items-center font-bold  rounded-md px-16 py-2`}
+                  >
+                    Admin
+                  </Link>
+                )}
+              </Menu.Item>
+            </div>
+          ) : (
+            ""
+          )}
         </Menu.Items>
       </Transition>
     </div>

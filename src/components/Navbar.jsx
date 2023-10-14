@@ -11,7 +11,8 @@ import LightSwitch from "./LightSwitch";
 import Nav from "./Nav";
 import UserNav from "./UserNav";
 import { BiCart } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { listCartItems } from "../action/cartActions";
 
 const navs = [
   { name: "home", link: "/" },
@@ -32,7 +33,14 @@ const navs = [
 const Navbar = () => {
   const context = useContext(myContext);
   const { mode } = context;
-  //const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const user = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
+  // const cartItemsList = useSelector((state) => state.cartItemsList);
+  // const { cartItems } = cartItemsList;
+
+  // React.useEffect(() => {
+  //   dispatch(listCartItems());
+  // }, [dispatch]);
 
   return (
     <div>
@@ -52,13 +60,27 @@ const Navbar = () => {
             {navs.map((nav) => {
               return <Link to={nav.link}>{nav.name}</Link>;
             })}
+
+            {user?.user?.email === "fopefaokunla@gmail.com" ? (
+              <Link
+                className="transition hover:text-teal-600/50"
+                to={"/dashboard"}
+              >
+                Admin
+              </Link>
+            ) : (
+              ""
+            )}
           </nav>
         </div>
         <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
           <LightSwitch />
           <Link className="relative" to={"/cart"}>
-            <span className="absolute bg-red-500 rounded-full right-0 top-[-1rem] flex h-[1.2rem] w-[1.2rem]">
-              {/* {cart.length} */}
+            <span className="absolute right-0 top-[-1rem] flex h-[1.4rem] w-[1.4rem]">
+              <span className="relative  font-semibold  inline-flex h-full w-full rounded-full px-[.6rem] py-[.6rem] bg-red-500"></span>
+              <span className="absolute text-white text-center font-semibold top-[-.1rem] right-[.4rem]">
+                {listCartItems.length}
+              </span>
             </span>
             <BiCart color={mode === "dark" ? "white" : ""} size={28} />
           </Link>

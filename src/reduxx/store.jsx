@@ -1,9 +1,27 @@
-import { configureStore } from "@reduxjs/toolkit";
-import cartSlice from "./cartSlice";
+import { combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { productListReducer } from "../reducers/productReducer";
+import {
+  addItemToCartReducer,
+  listCartItemsReducer,
+} from "../reducers/cartReducers";
 
-export const store = configureStore({
-  reducer: {
-    cart: cartSlice,
-  },
-  devTools: true,
+const reducer = combineReducers({
+  productsList: productListReducer,
+  cartItemsList: listCartItemsReducer,
+  addToCart: addItemToCartReducer,
 });
+
+const initialState = {};
+
+const middleware = [thunk];
+
+export const store = createStore(
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+// export default store;

@@ -8,6 +8,7 @@ import myContext from "../context/myContext";
 const UserNav = () => {
   const context = useContext(myContext);
   const { mode } = context;
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div
@@ -28,28 +29,29 @@ const UserNav = () => {
           className=" right-4 w-56 ring-2 ring-gray-400 origin-top-right  rounded-md bg-white "
         >
           <div className="px-1 py-1 ">
-            {/* <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? "bg-violet-500 text-white" : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <EditActiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <EditInactiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      )}
-                      Edit
-                    </button>
-                  )}
-                </Menu.Item> */}
+            {user ? (
+              <Link className="transition hover:text-teal-600/50" to={"/order"}>
+                Order
+              </Link>
+            ) : (
+              ""
+            )}
+            {user ? (
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    className={`${
+                      active ? "bg-[#40aa54] text-white" : ""
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    to={"/order"}
+                  >
+                    Order
+                  </Link>
+                )}
+              </Menu.Item>
+            ) : (
+              ""
+            )}
             <Menu.Item>
               {({ active }) => (
                 <button

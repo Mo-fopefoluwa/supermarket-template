@@ -4,37 +4,36 @@ import { BiLock, BiMinus, BiPlus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addToCart } from "../reduxx/cartSlice";
+import { ListProducts } from "../action/productAction";
 
 const Category = () => {
   const context = useContext(myContext);
   const { mode, product } = context;
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart);
+  // const cartItems = useSelector((state) => state.cart);
   // console.log(cartItems)
 
-  // add to cart
-  const addCart = (product) => {
-    dispatch(addToCart({product}));
-    toast.success("add to cart");
-  };
+  const productList = useSelector((state) => state.productList);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+  const { error, products } = productList;
+
+  React.useEffect(() => {
+    dispatch(ListProducts());
+  }, [dispatch]);
 
   return (
     <div>
       <div>
-        <h2>What would to get today?</h2>
+        <h2>What would to you get today?</h2>
 
         <div className="py-16 px-12 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
-          {product.map((products, index) => {
-            const { title, price, category, imageUrl } = products;
+          {products.map((product, index) => {
+            const { title, price, category, imageUrl } = product;
             return (
               <div
                 onClick={() =>
-                  (window.location.href = `/productinfo/${products.id}`)
+                  (window.location.href = `/productinfo/${product.id}`)
                 }
                 key={index}
                 style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}
@@ -66,7 +65,7 @@ const Category = () => {
                     </button>
                   </span>
                   <button
-                    onClick={addCart(products)}
+                    // onClick={addCart(products)}
                     className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
                     <BiLock color="white" size={20} />{" "}
