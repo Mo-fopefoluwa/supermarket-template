@@ -17,10 +17,6 @@ const navs = [
     name: "our app",
     link: "/ourapp",
   },
-  {
-    name: "admin",
-    link: "/dashboard",
-  },
 ];
 
 const Nav = () => {
@@ -59,16 +55,6 @@ const Nav = () => {
                     {link.name}
                   </Link>
                 )}
-                {/* {user?.user?.email === "fopefaokunla@gmail.com" ? (
-                  <Link
-                    className="transition hover:text-teal-500/50"
-                    to={"/dashboard"}
-                  >
-                    Admin
-                  </Link>
-                ) : (
-                  ""
-                )} */}
               </Menu.Item>
             </div>
           ))}

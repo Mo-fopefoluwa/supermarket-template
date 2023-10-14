@@ -28,10 +28,6 @@ const navs = [
     name: "our app",
     link: "/ourapp",
   },
-  {
-    name: "admin",
-    link: "/dashboard",
-  },
 ];
 
 const Navbar = () => {
@@ -64,7 +60,7 @@ const Navbar = () => {
             {navs.map((nav) => {
               return <Link to={nav.link}>{nav.name}</Link>;
             })}
-            {/* 
+
             {user?.user?.email === "fopefaokunla@gmail.com" ? (
               <Link
                 className="transition hover:text-teal-600/50"
@@ -74,7 +70,7 @@ const Navbar = () => {
               </Link>
             ) : (
               ""
-            )} */}
+            )}
           </nav>
         </div>
         <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">

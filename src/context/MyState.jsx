@@ -25,6 +25,7 @@ import { toast } from "react-toastify";
 const MyState = (props) => {
   const [mode, setMode] = useState("light");
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState("password");
@@ -42,7 +43,9 @@ const MyState = (props) => {
   const signup = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (email === "") {
+    if (name === "") {
+      toast.error("Name is required");
+    } else if (email === "") {
       toast.error("Email is required");
     } else if (password === "") {
       toast.error("Password is required");
@@ -53,15 +56,17 @@ const MyState = (props) => {
       console.log(users);
 
       const user = {
+        name: name,
         uid: users.user.uid,
         email: users.user.email,
         time: Timestamp.now(),
       };
       const userRef = collection(fireDB, "users");
       await addDoc(userRef, user);
+      setName("");
       setEmail("");
       setPassword("");
-      toast.success("sign up success");
+      toast.success("You're now a proud member of GMarket");
       window.location.href = "/login";
       setLoading(false);
     } catch (error) {
@@ -282,6 +287,7 @@ const MyState = (props) => {
       setLoading(false);
       setIsOpen(false);
       window.location.href = "/dashboard";
+      window.location.reload();
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -298,6 +304,7 @@ const MyState = (props) => {
       setLoading(false);
       setIsOpen(false);
       window.location.href = "/dashboard";
+      window.location.reload();
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -312,6 +319,7 @@ const MyState = (props) => {
       toast.success("Product Deleted successfully");
       setLoading(false);
       getProductData();
+      window.location.reload();
     } catch (error) {
       toast.error("Couldn't complete the process, Please try again");
       setLoading(false);
@@ -325,6 +333,7 @@ const MyState = (props) => {
       toast.success("Package Deleted successfully");
       setLoading(false);
       getPackageData();
+      window.location.reload();
     } catch (error) {
       toast.error("Couldn't complete the process, Please try again");
       setLoading(false);
@@ -391,6 +400,8 @@ const MyState = (props) => {
         login,
         togglePassword,
         user,
+        name,
+        setName,
         email,
         setEmail,
         password,

@@ -4,7 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 
 const UpdateProducts = () => {
   const context = useContext(myContext);
-  const { products, setProducts, updateProduct, editHandle } = context;
+  const { products, setProducts, updateProduct, edithandleProduct } = context;
   const { loading } = context;
   let [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +13,7 @@ const UpdateProducts = () => {
   }
 
   function openModal() {
-    editHandle();
+    // editHandle();
     setIsOpen(true);
   }
 
@@ -22,7 +22,7 @@ const UpdateProducts = () => {
       <div className=" inset-0">
         <button
           type="button"
-          onClick={openModal}
+          onClick={edithandleProduct}
           className="rounded-md bg-[#40aa54] bg-opacity-80 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           <svg

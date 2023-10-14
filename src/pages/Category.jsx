@@ -11,7 +11,17 @@ const Category = () => {
   const { mode, product } = context;
 
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart);
+
+  const addCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success("add to cart");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   // console.log(cartItems)
 
   // const productList = useSelector((state) => state.productList);
@@ -28,7 +38,7 @@ const Category = () => {
         <h2>What would to you get today?</h2>
 
         <div className="py-16 px-12 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
-          {product.map((Products, index) => {
+          {product.map((products, index) => {
             const { title, price, category, imageUrl } = products;
             return (
               <div

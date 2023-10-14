@@ -9,6 +9,8 @@ const Signup = () => {
   const {
     signup,
     togglePassword,
+    name,
+    setName,
     email,
     setEmail,
     password,
@@ -26,6 +28,21 @@ const Signup = () => {
         <div className="flex justify-center items-center">
           <div className="py-6 bg-white w-full md:w-[50%] lg:w-[40%] rounded-xl">
             <form className="py-12 flex flex-col px-6" action="">
+              <span className="flex flex-col">
+                <label
+                  className="text-[#464545] font-semibold pb-2"
+                  htmlFor="name"
+                >
+                  Your Name
+                </label>
+                <input
+                  className="w-full border-2 border-gray-400 ring-2 ring-gray-400 rounded-md focus:outline-none px-4 py-3"
+                  id="name"
+                  type="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </span>
               <span className="flex flex-col">
                 <label
                   className="text-[#464545] font-semibold pb-2"

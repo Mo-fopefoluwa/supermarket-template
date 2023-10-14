@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/registration/Signup";
 import MyState from "./context/MyState";
 import { AnimatePresence } from "framer-motion";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/registration/Login";
 import Nopage from "./pages/Nopage";
@@ -16,6 +16,9 @@ import UpdateProducts from "./components/UpdateProducts";
 import ProductInfo from "./pages/ProductInfo";
 import { CartContextProvider } from "./context/CartContext";
 import Dashboard from "./admin/Dashboard";
+import Order from "./pages/Order";
+import UpdatePackage from "./components/UpdatePackage";
+import AddPackages from "./components/AddPackages";
 
 function App() {
   return (
@@ -39,9 +42,54 @@ function App() {
               <Route path="/productinfo/:id" element={<ProductInfo />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/packages" element={<Packages />} />
-              <Route path="/addproduct" element={<AddProducts />} />
-              <Route path="/updateproduct" element={<UpdateProducts />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route
+                path="/order"
+                element={
+                  <ProtectedRoute>
+                    <Order />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/addproduct"
+                element={
+                  <ProtectedRouteForAdmin>
+                    <AddProducts />
+                  </ProtectedRouteForAdmin>
+                }
+              />
+              <Route
+                path="/updateproduct"
+                element={
+                  <ProtectedRouteForAdmin>
+                    <UpdateProducts />
+                  </ProtectedRouteForAdmin>
+                }
+              />
+              <Route
+                path="/addpackage"
+                element={
+                  <ProtectedRouteForAdmin>
+                    <AddPackages />
+                  </ProtectedRouteForAdmin>
+                }
+              />
+              <Route
+                path="/updatepackage"
+                element={
+                  <ProtectedRouteForAdmin>
+                    <UpdatePackage />
+                  </ProtectedRouteForAdmin>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRouteForAdmin>
+                    <Dashboard />
+                  </ProtectedRouteForAdmin>
+                }
+              />
               <Route path="/*" element={<Nopage />} />
             </Routes>
             <ToastContainer />
@@ -60,6 +108,9 @@ export const ProtectedRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
+    setTimeout(() => {
+      toast("Please login to view");
+    }, 1000);
     return <Navigate to={"/login"} />;
   }
 };
@@ -72,6 +123,9 @@ const ProtectedRouteForAdmin = ({ children }) => {
   if (admin.user.email === "fopefaokunla@gmail.com") {
     return children;
   } else {
+    setTimeout(() => {
+      toast("Please login to view");
+    }, 1000);
     return <Navigate to={"/login"} />;
   }
 };
