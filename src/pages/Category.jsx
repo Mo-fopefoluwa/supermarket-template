@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addToCart } from "../reduxx/cartSlice";
 import { ListProducts } from "../action/productAction";
+import { addProductToCart } from "../action/cartActions";
 
 const Category = () => {
   const context = useContext(myContext);
@@ -13,10 +14,13 @@ const Category = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
-  const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("add to cart");
+  const addtoCartHandler = () => {
+    dispatch(addProductToCart(product));
   };
+  // const addCart = (product) => {
+  //   dispatch(addToCart(product));
+  //   toast.success("add to cart");
+  // };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -75,7 +79,7 @@ const Category = () => {
                     </button>
                   </span>
                   <button
-                    onClick={addCart(products)}
+                    onClick={addtoCartHandler(products.id)}
                     className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
                     <BiLock color="white" size={20} />{" "}

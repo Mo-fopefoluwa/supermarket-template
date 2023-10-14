@@ -4,6 +4,7 @@ import { BiLock } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../reduxx/cartSlice";
 import { toast } from "react-toastify";
+import { addProductToCart } from "../action/cartActions";
 
 const PopularBundle = () => {
   const context = useContext(myContext);
@@ -11,10 +12,14 @@ const PopularBundle = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
-  const addCart = (packagee) => {
-    dispatch(addToCart(packagee));
-    toast.success("add to cart");
+  const addtoCartHandler = () => {
+    dispatch(addProductToCart(packagee));
   };
+
+  // const addCart = (packagee) => {
+  //   dispatch(addToCart(packagee));
+  //   toast.success("add to cart");
+  // };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -57,7 +62,7 @@ const PopularBundle = () => {
                     </button>
                   </span>
                   <button
-                    onClick={addCart(item)}
+                    onClick={addtoCartHandler(item.id)}
                     className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
                     <BiLock color="white" size={20} />{" "}

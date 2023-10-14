@@ -30,20 +30,14 @@ const UserNav = () => {
         >
           <div className="px-1 py-1 ">
             {user ? (
-              <Link className="transition hover:text-teal-600/50" to={"/order"}>
-                Order
-              </Link>
-            ) : (
-              ""
-            )}
-            {user ? (
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    className={`${
-                      active ? "bg-[#40aa54] text-white" : ""
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     to={"/order"}
+                    style={{ color: mode === "dark" ? "white" : "" }}
+                    className={`${
+                      active ? "bg-[#40aa54] text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md font-bold px-2 py-2 `}
                   >
                     Order
                   </Link>

@@ -9,18 +9,31 @@ import { deleteFromCart } from "../reduxx/cartSlice";
 import { toast } from "react-toastify";
 import { BiMinus, BiPlus, BiTrash } from "react-icons/bi";
 import CheckoutModal from "../components/CheckoutModal";
-import { listCartItems } from "../action/cartActions";
+import {
+  deleteItemFromCart,
+  listCartItems,
+  updateCartQty,
+} from "../action/cartActions";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const context = useContext(myContext);
-  const { mode } = context;
+  const { mode, product } = context;
   const dispatch = useDispatch();
   const cartItemsList = useSelector((state) => state.cartItemsList);
   const { error, cartItems } = cartItemsList;
 
-  React.useEffect(() => {
-    dispatch(listCartItems());
-  }, [dispatch]);
+  const [qty, setQty] = React.useState(Number(product.qtyInCart));
+  const handleCartQty = (product) => {
+    dispatch(updateCartQty(product, Number(qty)));
+  };
+
+  const handleCartDel = (cartItemId) => {
+    dispatch(deleteItemFromCart(cartItemId));
+  };
+  // React.useEffect(() => {
+  //   dispatch(listCartItems());
+  // }, [dispatch]);
   // console.log(cartItems);
   // const [totalAmount, setTotalAmount] = useState(0);
   // useEffect(() => {
@@ -47,10 +60,10 @@ const Cart = () => {
 
   return (
     <div>
-      <div className=" relative pt-[4rem] w-[100%]">
+      <Link to={"/"} className=" relative pt-[4rem] w-[100%]">
         <HiArrowLeft className="absolute left-8 top-[4.2rem]" size={25} />
         <h2 className="font-bold text-[1.4rem] text-center ">Cart</h2>
-      </div>
+      </Link>
       <div className=" flex justify-center pt-[4rem] items-center">
         <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
           {cartItems.map((item) => {
@@ -58,13 +71,13 @@ const Cart = () => {
               <>
                 <div className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8">
                   <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
-                    <img className="h-full w-full" src="image6.jpeg" alt="" />
+                    <img className="h-full w-full" src={item.imageURL} alt="" />
                   </div>
                   <div className="flex flex-col gap-4 w-[60%]">
                     <span>
-                      <p className="font-bold text-[1.1rem]"> Cabbage</p>
+                      <p className="font-bold text-[1.1rem]"> {item.title}</p>
                       <p className="text-sm font-semibold text-gray-600">
-                        N2000
+                        N {item.price}
                       </p>
                     </span>
                     <span className="flex flex-row justify-between">
@@ -72,7 +85,7 @@ const Cart = () => {
                         <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
                           <BiMinus />
                         </button>
-                        <p className="px-3 font-bold">2</p>
+                        <p className="px-3 font-bold">{qty}</p>
                         <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
                           <BiPlus />
                         </button>
@@ -80,13 +93,11 @@ const Cart = () => {
                     </span>
                   </div>
                   <div className="flex flex-col gap-8 items-end">
-                    <button
-                    // onClick={deleteCart}
-                    >
+                    <button onClick={() => handleCartDel(item.id)}>
                       {" "}
                       <BiTrash size={22} />
                     </button>
-                    <p className="font-bold">N2000</p>
+                    <p className="font-bold">N{item.price}</p>
                   </div>
                 </div>
               </>

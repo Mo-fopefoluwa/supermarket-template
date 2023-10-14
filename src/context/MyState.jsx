@@ -138,7 +138,6 @@ const MyState = (props) => {
     price: null,
     imageUrl: null,
     category: null,
-    weight: null,
     description: null,
     time: Timestamp.now(),
     date: new Date().toLocaleString("en-Us", {
@@ -151,14 +150,16 @@ const MyState = (props) => {
   let [isOpen, setIsOpen] = useState(false);
 
   const addProduct = async () => {
-    if (
-      products.title == null ||
-      products.price == null ||
-      products.imageUrl == null ||
-      products.category == null ||
-      products.description == null
-    ) {
-      return toast.error("Please fill all fields");
+    if (products.title === "") {
+      return toast.error("Please fill the title field");
+    } else if (products.price === "") {
+      return toast.error("Please add a price");
+    } else if (products.imageUrl === "") {
+      return toast.error("Please add an image");
+    } else if (products.category === "") {
+      return toast.error("Please add a category");
+    } else if (products.description === "") {
+      return toast.error("Please add a desciption for the product");
     }
 
     try {
@@ -172,7 +173,6 @@ const MyState = (props) => {
       }, 8000);
       getProductData();
       setLoading(false);
-      setIsOpen(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -181,16 +181,17 @@ const MyState = (props) => {
   };
 
   const addPackages = async () => {
-    if (
-      packages.title == null ||
-      packages.price == null ||
-      packages.imageUrl == null ||
-      packages.category == null ||
-      packages.description == null
-    ) {
-      return toast.error("Please fill all fields");
+    if (packages.title === "") {
+      return toast.error("Please fill the title field");
+    } else if (packages.price === "") {
+      return toast.error("Please add a price");
+    } else if (packages.imageUrl === "") {
+      return toast.error("Please add an image");
+    } else if (packages.category === "") {
+      return toast.error("Please add a category");
+    } else if (packages.description === "") {
+      return toast.error("Please add a desciption for the package bundle");
     }
-
     try {
       setLoading(true);
       const packageRef = collection(fireDB, "packages");
@@ -202,7 +203,7 @@ const MyState = (props) => {
       }, 8000);
       getPackageData();
       setLoading(false);
-      setIsOpen(false);
+      // setIsOpen(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -399,6 +400,7 @@ const MyState = (props) => {
         signup,
         login,
         togglePassword,
+        order,
         user,
         name,
         setName,

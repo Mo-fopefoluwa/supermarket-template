@@ -33,7 +33,7 @@ function Dashboard() {
                   className="title-font font-medium text-3xl text-black fonts1"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  {/* {order.length} */}
+                  {order.length}
                 </h2>
                 <p
                   className=" text-green-600  font-bold"

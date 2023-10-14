@@ -346,7 +346,7 @@ function DashboardTab() {
                 </div>
               </div>
             </TabPanel>
-            {/* <TabPanel>
+            <TabPanel>
               <div className="relative overflow-x-auto mb-16">
                 <h1
                   className=" text-center mb-5 text-3xl font-semibold underline"
@@ -530,7 +530,7 @@ function DashboardTab() {
                   );
                 })}
               </div>
-            </TabPanel> */}
+            </TabPanel>
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1

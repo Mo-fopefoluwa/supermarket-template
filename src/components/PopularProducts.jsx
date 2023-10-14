@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ListProducts } from "../action/productAction";
 import { addToCart } from "../reduxx/cartSlice";
 import { toast } from "react-toastify";
+import { addProductToCart } from "../action/cartActions";
 
 const PopularProducts = () => {
   const context = useContext(myContext);
@@ -14,10 +15,14 @@ const PopularProducts = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
-  const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("add to cart");
+  const addtoCartHandler = () => {
+    dispatch(addProductToCart(product));
   };
+
+  // const addCart = (product) => {
+  //   dispatch(addToCart(product));
+  //   toast.success("add to cart");
+  // };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -87,7 +92,7 @@ const PopularProducts = () => {
                   </button>
                 </span>
                 <button
-                  onClick={addCart(item)}
+                  onClick={addtoCartHandler(item.id)}
                   className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                 >
                   <BiLock color="white" size={20} />{" "}
@@ -122,7 +127,10 @@ const PopularProducts = () => {
                 +
               </button>
             </span>
-            <button className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]">
+            <button
+              // onClick={addtoCartHandler}
+              className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
+            >
               <BiLock color="white" size={20} />{" "}
             </button>
           </span>
