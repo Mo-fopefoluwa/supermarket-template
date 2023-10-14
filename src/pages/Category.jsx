@@ -14,13 +14,13 @@ const Category = () => {
   // const cartItems = useSelector((state) => state.cart);
   // console.log(cartItems)
 
-  const productList = useSelector((state) => state.productList);
+  // const productList = useSelector((state) => state.productList);
 
-  const { error, products } = productList;
+  // const { error, products } = productList;
 
-  React.useEffect(() => {
-    dispatch(ListProducts());
-  }, [dispatch]);
+  // React.useEffect(() => {
+  //   dispatch(ListProducts());
+  // }, [dispatch]);
 
   return (
     <div>
@@ -28,12 +28,12 @@ const Category = () => {
         <h2>What would to you get today?</h2>
 
         <div className="py-16 px-12 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
-          {products.map((product, index) => {
-            const { title, price, category, imageUrl } = product;
+          {product.map((Products, index) => {
+            const { title, price, category, imageUrl } = products;
             return (
               <div
                 onClick={() =>
-                  (window.location.href = `/productinfo/${product.id}`)
+                  (window.location.href = `/productinfo/${products.id}`)
                 }
                 key={index}
                 style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}
@@ -65,7 +65,7 @@ const Category = () => {
                     </button>
                   </span>
                   <button
-                    // onClick={addCart(products)}
+                    onClick={addCart(products)}
                     className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
                     <BiLock color="white" size={20} />{" "}
