@@ -144,6 +144,7 @@ const MyState = (props) => {
   });
 
   let [isOpen, setIsOpen] = useState(false);
+
   const addProduct = async () => {
     if (
       products.title == null ||
@@ -264,10 +265,12 @@ const MyState = (props) => {
 
   const edithandleProduct = (item) => {
     setProducts(item);
+    setIsOpen(true);
   };
 
   const edithandlePackage = (item) => {
     setPackages(item);
+    setIsOpen(true);
   };
   // update product
   const updateProduct = async (item) => {
@@ -409,6 +412,8 @@ const MyState = (props) => {
         edithandlePackage,
         deleteProduct,
         deletePackage,
+        getPackageData,
+        getProductData,
       }}
     >
       {props.children}
