@@ -14,16 +14,24 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
-import { fireDB } from "../Firebase/Firebase";
+import { fireDB, storage } from "../Firebase/Firebase";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { create } from "../reduxx/productSlice";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 const MyState = (props) => {
   const [mode, setMode] = useState("light");
@@ -122,13 +130,21 @@ const MyState = (props) => {
     }
   };
 
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  const googleLogin = async () => {
+    const response = await signInWithPopup(auth, provider);
+    console.log(response);
+  };
+
   const [products, setProducts] = useState({
     title: null,
     price: null,
     imageUrl: null,
     category: null,
     description: null,
-    //weight: "",
+    weight: "",
     time: Timestamp.now(),
     date: new Date().toLocaleString("en-Us", {
       month: "short",
@@ -182,6 +198,58 @@ const MyState = (props) => {
       setLoading(false);
     }
     setProducts("");
+  };
+
+  const [msg, setMsg] = useState("");
+
+  const uploadImage = (e) => {
+    setLoading(true);
+    const imageFile = e.target.files[0];
+    const storageRef = ref(storage, `images/${Date.now()}-${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const uploadProgress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      (error) => {
+        console.log(error);
+        setMsg("Error while uploading: Please try again ");
+        // setAlertStatus('danger')
+        setTimeout(() => {
+          setLoading(false);
+        }, 4000);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setProducts.imageUrl(downloadURL);
+          setLoading(false);
+          // setFields(true)
+          setMsg("Image uploaded successfully");
+          // setAlertStatus(success)
+          //   setTimeout(() => {
+          //     setFields(false)
+          //   }, 4000);
+        });
+      }
+    );
+  };
+
+  const deleteImage = () => {
+    setLoading(true);
+    const storageRef = ref(storage);
+    const deleteRef = (storageRef, products.imageUrl);
+    deleteObject(deleteRef).then(() => {
+      setProducts.imageUrl(null);
+      setLoading(false);
+      setMsg("Image deleted successfully");
+      // setAlertStatus('success')
+      // setTimeout(() => {
+      //   setFields(false)
+      // }, 4000);
+    });
   };
 
   const addPackages = async () => {
@@ -447,6 +515,66 @@ const MyState = (props) => {
     getUserData();
   }, []);
 
+  const categories = [
+    {
+      id: 1,
+      name: "Fruits",
+      urlParamName: "fruits",
+    },
+    ,
+    {
+      id: 2,
+      name: "food & oils",
+      urlParamName: "food-and-oils",
+    },
+
+    {
+      id: 3,
+      name: "baby care",
+      urlParamName: "baby",
+    },
+    ,
+    {
+      id: 4,
+      name: "beauty",
+      urlParamName: "beauty",
+    },
+    ,
+    {
+      id: 5,
+      name: "meat & fish",
+      urlParamName: "meat-and-fish",
+    },
+    {
+      id: 6,
+      name: "medicine",
+      urlParamName: "medicine",
+    },
+    ,
+    {
+      id: 7,
+      name: "cutleries",
+      urlParamName: "cutleries",
+    },
+    {
+      id: 8,
+      name: "milk & dairies",
+      urlParamName: "milk",
+    },
+    ,
+    {
+      id: 9,
+      name: "snacks & branded foods",
+      urlParamName: "",
+    },
+    ,
+    {
+      id: 10,
+      name: "cleaning & household",
+      urlParamName: "cleaning",
+    },
+  ];
+
   const [searchkey, setSearchkey] = useState("");
   const [filterType, setFilterType] = useState("");
   const [filterPrice, setFilterPrice] = useState("");
@@ -463,6 +591,7 @@ const MyState = (props) => {
         order,
         user,
         name,
+        categories,
         setName,
         email,
         setEmail,
@@ -486,6 +615,10 @@ const MyState = (props) => {
         deletePackage,
         getPackageData,
         getProductData,
+        uploadImage,
+        deleteImage,
+        setMsg,
+        msg,
       }}
     >
       {props.children}

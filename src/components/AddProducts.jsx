@@ -1,10 +1,19 @@
 import React, { useContext, Fragment, useState } from "react";
 import myContext from "../context/myContext";
 import { Dialog, Transition } from "@headlessui/react";
+import Loader from "./Loader";
+import { MdCloudUpload, MdDelete } from "react-icons/md";
 
 const AddProducts = () => {
   const context = useContext(myContext);
-  const { products, setProducts, addProduct } = context;
+  const {
+    products,
+    setProducts,
+    categories,
+    addProduct,
+    uploadImage,
+    deleteImage,
+  } = context;
   const { loading } = context;
   let [isOpen, setIsOpen] = useState(false);
 
@@ -86,28 +95,89 @@ const AddProducts = () => {
                         value={products.price}
                         className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
                       />
-                      <label className="mb-[-1.5rem]" htmlFor="imageUrl">
-                        Image
-                      </label>
-                      <input
-                        name="imageUrl"
-                        type="text"
+                      <span className="group flex flex-col justify-center items-center border-4 border-dotted border-gray-300 w-full h-[200px] md:h-[250px] cursor-pointer rounded-lg">
+                        {loading ? (
+                          <Loader />
+                        ) : (
+                          <>
+                            {!products.imageUrl ? (
+                              <>
+                                <label
+                                  htmlFor="imageUrl"
+                                  className="w-full h-full flex flex-col items-center justify-center cursor-pointer"
+                                >
+                                  <div className="w-full h-full flex flex-col items-center gap-2">
+                                    <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-700" />
+                                    <p className="text-gray-500 hover:textgray-700">
+                                      Click here to upload
+                                    </p>
+                                  </div>
+                                  <input
+                                    name="imageUrl"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={uploadImage}
+                                    value={products.imageUrl}
+                                    //className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
+                                  />
+                                </label>
+                              </>
+                            ) : (
+                              <>
+                                <div className="relative h-full">
+                                  <img
+                                    src={products.imageUrl}
+                                    alt="uploaded image"
+                                  />
+                                  {/* <button
+                                    type="button"
+                                    className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 text-xl cursor-pointer outline-none hover:shadow-md duration-500 transition-all  ease-in-out"
+                                    onClick={deleteImage}
+                                  >
+                                    {" "}
+                                    <MdDelete />{" "}
+                                  </button> */}
+                                </div>
+                              </>
+                            )}
+                          </>
+                        )}
+                      </span>
+                      <select
                         onChange={(e) =>
-                          setProducts({ ...products, imageUrl: e.target.value })
+                          setProducts({
+                            ...products,
+                            categories: e.target.value,
+                          })
                         }
-                        value={products.imageUrl}
-                        className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
-                      />
+                      >
+                        <option value="other" className="bg-gray-300">
+                          Select Category
+                        </option>
+                        {categories &&
+                          categories.map((item) => {
+                            return (
+                              <option
+                                className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
+                                key={categories.id}
+                                value={categories.name}
+                              >
+                                {" "}
+                                {categories.name}
+                              </option>
+                            );
+                          })}
+                      </select>
                       <label className="mb-[-1.5rem]" htmlFor="category">
-                        Category
+                        Weight
                       </label>
                       <input
-                        name="category"
+                        name="weight"
                         type="text"
                         onChange={(e) =>
-                          setProducts({ ...products, category: e.target.value })
+                          setProducts({ ...products, weight: e.target.value })
                         }
-                        value={products.category}
+                        value={products.weight}
                         className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
                       />
                       <label className="mb-[-1.5rem]" htmlFor="address">
@@ -121,7 +191,7 @@ const AddProducts = () => {
                           })
                         }
                         value={products.description}
-                        cols="30"
+                        cols="20"
                         rows="10"
                         name="decription"
                         className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
