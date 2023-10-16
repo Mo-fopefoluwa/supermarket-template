@@ -222,6 +222,7 @@ const MyState = (props) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setProducts.imageUrl(downloadURL);
           setLoading(false);
+          console.log(setProducts.imageUrl);
           // setFields(true)
           setMsg("Image uploaded successfully");
           // setAlertStatus(success)
@@ -247,6 +248,62 @@ const MyState = (props) => {
       // }, 4000);
     });
   };
+
+  // <span className="group flex flex-col justify-center items-center border-4 border-dotted border-gray-300 w-full h-[200px] md:h-[250px] cursor-pointer rounded-lg">
+  //   {loading ? (
+  //     <Loader />
+  //   ) : (
+  //     <>
+  //       {!products.imageUrl ? (
+  //         <>
+  //           <label
+  //             htmlFor="imageUrl"
+  //             className="w-full h-full flex flex-col items-center justify-center cursor-pointer"
+  //           >
+  //             <div className="w-full h-full flex flex-col items-center pt-8 gap-2">
+  //               <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-700" />
+  //               <p className="text-gray-500 hover:textgray-700">
+  //                 Click here to upload
+  //               </p>
+  //             </div>
+  //             <input
+  //               name="imageUrl"
+  //               type="file"
+  //               accept="images/*"
+  //               onChange={
+  //                 (e) =>
+  //                   setProducts({
+  //                     ...products,
+  //                     imageUrl: e.target.value,
+  //                   })
+  //                 // uploadImage
+  //               }
+  //               value={products.imageUrl}
+  //               className=" px-6 py-2 w-full h-full"
+  //             />
+  //           </label>
+  //         </>
+  //       ) : (
+  //         <>
+  //           <div className="relative h-full">
+  //             <img
+  //               src={products.imageUrl}
+  //               alt="uploaded image"
+  //             />
+  //             {/* <button
+  //               type="button"
+  //               className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 text-xl cursor-pointer outline-none hover:shadow-md duration-500 transition-all  ease-in-out"
+  //               onClick={deleteImage}
+  //             >
+  //               {" "}
+  //               <MdDelete />{" "}
+  //             </button> */}
+  //           </div>
+  //         </>
+  //       )}
+  //     </>
+  //   )}
+  // </span>
 
   const addPackages = async () => {
     if (packages.title === "") {
@@ -581,6 +638,7 @@ const MyState = (props) => {
         mode,
         setMode,
         toggleMode,
+        loading,
         signup,
         login,
         togglePassword,

@@ -3,6 +3,7 @@ import myContext from "../context/myContext";
 import { Dialog, Transition } from "@headlessui/react";
 import Loader from "./Loader";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const AddProducts = () => {
   const context = useContext(myContext);
@@ -95,59 +96,26 @@ const AddProducts = () => {
                         value={products.price}
                         className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
                       />
-                      <span className="group flex flex-col justify-center items-center border-4 border-dotted border-gray-300 w-full h-[200px] md:h-[250px] cursor-pointer rounded-lg">
-                        {loading ? (
-                          <Loader />
-                        ) : (
-                          <>
-                            {!products.imageUrl ? (
-                              <>
-                                <label
-                                  htmlFor="imageUrl"
-                                  className="w-full h-full flex flex-col items-center justify-center cursor-pointer"
-                                >
-                                  <div className="w-full h-full flex flex-col items-center gap-2">
-                                    <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-700" />
-                                    <p className="text-gray-500 hover:textgray-700">
-                                      Click here to upload
-                                    </p>
-                                  </div>
-                                  <input
-                                    name="imageUrl"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={uploadImage}
-                                    value={products.imageUrl}
-                                    //className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
-                                  />
-                                </label>
-                              </>
-                            ) : (
-                              <>
-                                <div className="relative h-full">
-                                  <img
-                                    src={products.imageUrl}
-                                    alt="uploaded image"
-                                  />
-                                  {/* <button
-                                    type="button"
-                                    className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 text-xl cursor-pointer outline-none hover:shadow-md duration-500 transition-all  ease-in-out"
-                                    onClick={deleteImage}
-                                  >
-                                    {" "}
-                                    <MdDelete />{" "}
-                                  </button> */}
-                                </div>
-                              </>
-                            )}
-                          </>
-                        )}
-                      </span>
+                      <label className="mb-[-1.5rem]" htmlFor="imageUrl">
+                        Image
+                      </label>
+                      <input
+                        name="imageUrl"
+                        type="text"
+                        onChange={(e) =>
+                          setProducts({ ...products, imageUrl: e.target.value })
+                        }
+                        value={products.imageUrl}
+                        className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
+                      />
+
                       <select
+                        name="category"
+                        className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
                         onChange={(e) =>
                           setProducts({
                             ...products,
-                            categories: e.target.value,
+                            category: e.target.value,
                           })
                         }
                       >
@@ -158,12 +126,12 @@ const AddProducts = () => {
                           categories.map((item) => {
                             return (
                               <option
-                                className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
-                                key={categories.id}
-                                value={categories.name}
+                                className="capitalize bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
+                                key={item.id}
+                                value={item.name}
                               >
                                 {" "}
-                                {categories.name}
+                                {item.name}
                               </option>
                             );
                           })}
@@ -191,8 +159,8 @@ const AddProducts = () => {
                           })
                         }
                         value={products.description}
-                        cols="20"
-                        rows="10"
+                        cols="10"
+                        rows="5"
                         name="decription"
                         className="bg-gray-300 rounded-md px-6 py-2 ring-gray-400 hover:ring-gray-600 ring-2"
                       ></textarea>
@@ -200,13 +168,14 @@ const AddProducts = () => {
                   </div>
 
                   <div className="mt-[4rem]">
-                    <button
+                    <motion.button
+                      whileTap={{ scale: 0.75 }}
                       type="button"
                       className="inline-flex w-[100%] justify-center rounded-md border border-transparent bg-[#40aa54] px-4 py-[.6rem] text-sm font-medium text-white hover:bg-[#1f7c30] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#31e252] focus-visible:ring-offset-2"
                       onClick={addProduct}
                     >
                       Got it!
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
