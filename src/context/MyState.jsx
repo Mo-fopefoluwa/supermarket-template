@@ -21,6 +21,9 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { create } from "../reduxx/productSlice";
 
 const MyState = (props) => {
   const [mode, setMode] = useState("light");
@@ -53,7 +56,7 @@ const MyState = (props) => {
     try {
       const auth = getAuth();
       const users = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(users);
+      //console.log(users);
 
       const user = {
         name: name,
@@ -125,6 +128,7 @@ const MyState = (props) => {
     imageUrl: null,
     category: null,
     description: null,
+    //weight: "",
     time: Timestamp.now(),
     date: new Date().toLocaleString("en-Us", {
       month: "short",
@@ -150,24 +154,24 @@ const MyState = (props) => {
   let [isOpen, setIsOpen] = useState(false);
 
   const addProduct = async () => {
-    if (products.title === "") {
+    if (products.title == null) {
       return toast.error("Please fill the title field");
-    } else if (products.price === "") {
+    } else if (products.price == null) {
       return toast.error("Please add a price");
-    } else if (products.imageUrl === "") {
+    } else if (products.imageUrl == null) {
       return toast.error("Please add an image");
-    } else if (products.category === "") {
+    } else if (products.category == null) {
       return toast.error("Please add a category");
-    } else if (products.description === "") {
+    } else if (products.description == null) {
       return toast.error("Please add a desciption for the product");
     }
 
     try {
       setLoading(true);
-      const productRef = collection(fireDB, "products");
-      await addDoc(productRef, products);
+      const productItemRef = collection(fireDB, "products");
+      await addDoc(productItemRef, products);
       toast.success("Product Added Successfully");
-      //console.log(products);
+      console.log(products);
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 8000);
@@ -210,7 +214,63 @@ const MyState = (props) => {
     }
     setPackages("");
   };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  // const addProduct = async (e) => {
+  //   //debugger;
+  //   e.preventDefault();
+
+  //   if (products.title == "") {
+  //     return toast.error("Please fill the title field");
+  //   } else if (products.price == "") {
+  //     return toast.error("Please add a price");
+  //   } else if (products.imageUrl == "") {
+  //     return toast.error("Please add an image");
+  //   } else if (products.category == "") {
+  //     return toast.error("Please add a category");
+  //   }
+  //   // else if (products.weight == "") {
+  //   //   return toast.error("Please add the weight of the product");
+  //   // }
+  //   else if (products.description == "") {
+  //     return toast.error("Please add a desciption for the product");
+  //   }
+  //   try {
+  //     dispatch(
+  //       create({
+  //         title: products.title,
+  //         price: products.price,
+  //         imageUrl: products.imageUrl,
+  //         category: products.category,
+  //         // weight: products.weight,
+  //         description: products.description,
+  //         deletedAt: 0,
+  //       })
+  //     );
+  //     toast.success("Package Added Successfully");
+  //     console.log(products);
+  //     //getProductData();
+  //     //navigate("/dashboard");
+  //     //window.location.reload();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setProducts({
+  //     title: "",
+  //     price: "",
+  //     imageUrl: "",
+  //     category: "",
+  //     //weight: "",
+  //     description: "",
+  //     time: Timestamp.now(),
+  //     date: new Date().toLocaleString("en-Us", {
+  //       month: "short",
+  //       day: "2-digit",
+  //       year: "numeric",
+  //     }),
+  //   });
+  // };
   const [packagee, setPackage] = useState([]);
   const [product, setProduct] = useState([]);
 
@@ -219,8 +279,8 @@ const MyState = (props) => {
     try {
       const q = query(
         collection(fireDB, "products"),
-        orderBy("time"),
-        limit(8)
+        orderBy("time")
+        //limit(8)
       );
 
       const data = onSnapshot(q, (QuerySnapshot) => {
@@ -241,13 +301,13 @@ const MyState = (props) => {
   const getPackageData = async () => {
     setLoading(true);
     try {
-      const q = query(
+      const qu = query(
         collection(fireDB, "packages"),
-        orderBy("time"),
-        limit(8)
+        orderBy("time")
+        //limit(8)
       );
 
-      const data = onSnapshot(q, (QuerySnapshot) => {
+      const data = onSnapshot(qu, (QuerySnapshot) => {
         let packageArray = [];
         QuerySnapshot.forEach((doc) => {
           packageArray.push({ ...doc.data(), id: doc.id });
@@ -416,7 +476,6 @@ const MyState = (props) => {
         setPackages,
         addPackages,
         addProduct,
-        addPackages,
         product,
         packagee,
         updateProduct,

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import myContext from "../context/myContext";
-import { BiLock } from "react-icons/bi";
+import { BiLock, BiMinus, BiPlus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../reduxx/cartSlice";
 import { toast } from "react-toastify";
@@ -34,13 +34,16 @@ const PopularBundle = () => {
         <h2 className="font-semibold text-[1.6rem]">Popular Bundle Pack</h2>
         <div className="py-16 px-16 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 lg:gap-16">
           {packagee.map((item, index) => {
-            const { imageURL, title, category, price } = item;
+            const { imageUrl, title, category, price } = item;
             return (
-              <div className="w-full h-full flex flex-col gap-2 bg-white rounded-xl shadow-sm px-4 md:px-6 py-6 md:py-8">
+              <div
+                key={index}
+                className="w-full h-full flex flex-col gap-2 bg-white rounded-xl shadow-sm px-4 md:px-6 py-6 md:py-8"
+              >
                 <span className=" w-full h-[150px]">
                   <img
                     className="w-full h-[150px] object-fit"
-                    src="bundle1.jpeg"
+                    src={imageUrl}
                     alt=""
                   />
                 </span>
@@ -54,11 +57,11 @@ const PopularBundle = () => {
                 <span className="flex flex-row justify-between">
                   <span className="flex flex-row">
                     <button className="ring-2 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                      -
+                      <BiMinus />
                     </button>
                     <p className="px-3 font-bold">2</p>
                     <button className="ring-2 ring-[#40aa54] px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                      +
+                      <BiPlus />
                     </button>
                   </span>
                   <button

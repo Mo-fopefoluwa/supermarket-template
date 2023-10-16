@@ -346,6 +346,7 @@ function DashboardTab() {
                 </div>
               </div>
             </TabPanel>
+            {/* Order */}
             <TabPanel>
               <div className="relative overflow-x-auto mb-16">
                 <h1
@@ -531,6 +532,7 @@ function DashboardTab() {
                 })}
               </div>
             </TabPanel>
+            {/* User */}
             <TabPanel>
               <div className="relative overflow-x-auto mb-10">
                 <h1

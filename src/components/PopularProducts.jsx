@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import myContext from "../context/myContext";
-import { BiLock } from "react-icons/bi";
+import { BiLock, BiMinus, BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ListProducts } from "../action/productAction";
@@ -84,11 +84,11 @@ const PopularProducts = () => {
               <span className="flex flex-row justify-between">
                 <span className="flex flex-row">
                   <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                    -
+                    <BiMinus />
                   </button>
                   <p className="px-3 font-bold">2</p>
                   <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                    +
+                    <BiPlus />
                   </button>
                 </span>
                 <button

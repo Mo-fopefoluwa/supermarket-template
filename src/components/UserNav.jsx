@@ -64,7 +64,7 @@ const UserNav = () => {
               <button className=" group  w-full rounded-md px-2 py-2 hover:ring-2 ring-gray-400">
                 <Link
                   style={{ color: "dark" ? "white" : "black" }}
-                  to={"wishlist/"}
+                  to={"/wishlist"}
                 >
                   {" "}
                   <BsSuitHeart

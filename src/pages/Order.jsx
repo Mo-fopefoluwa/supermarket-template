@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import myContext from "../context/myContext";
+import Loader from "../components/Loader";
 
 const Order = () => {
   const userid = JSON.parse(localStorage.getItem("user")).user.uid;
@@ -9,12 +10,12 @@ const Order = () => {
 
   return (
     <Layout>
-      {/* {loading && <Loader />} */}
+      {loading && <Loader />}
       {order.length > 0 ? (
         <>
           <div className=" h-full pt-10">
             {order
-              .filter((obj) => obj.userid == userid)
+              .filter((obj) => obj.userid === userid)
               .map((order) => {
                 // order.cartItems.map()
                 return (
@@ -31,7 +32,7 @@ const Order = () => {
                           >
                             <img
                               src={item.imageUrl}
-                              alt="product-image"
+                              alt="product"
                               className="w-full rounded-lg sm:w-40"
                             />
                             <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">

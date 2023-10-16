@@ -10,7 +10,6 @@ const AddProducts = () => {
 
   function closeModal() {
     setIsOpen(false);
-    addProduct();
   }
 
   function openModal() {

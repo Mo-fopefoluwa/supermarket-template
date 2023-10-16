@@ -12,6 +12,8 @@ import "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyABFJP0EJSVSURjLPw4tplVFBTHVnYh-UI",
   authDomain: "supermarket-ecommerce.firebaseapp.com",
+  databaseURL:
+    "https://supermarket-ecommerce-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "supermarket-ecommerce",
   storageBucket: "supermarket-ecommerce.appspot.com",
   messagingSenderId: "800501071412",
