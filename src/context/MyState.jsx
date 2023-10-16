@@ -174,8 +174,6 @@ const MyState = (props) => {
       return toast.error("Please fill the title field");
     } else if (products.price == null) {
       return toast.error("Please add a price");
-    } else if (products.imageUrl == null) {
-      return toast.error("Please add an image");
     } else if (products.category == null) {
       return toast.error("Please add a category");
     } else if (products.description == null) {
