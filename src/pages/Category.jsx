@@ -18,10 +18,10 @@ const Category = () => {
   // const addtoCartHandler = () => {
   //   dispatch(addProductToCart(product));
   // };
-  const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("add to cart");
-  };
+  // const addCart = (product) => {
+  //   dispatch(addToCart(product));
+  //   toast.success("add to cart");
+  // };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -88,7 +88,7 @@ const Category = () => {
                   </span>
                   <motion.button
                     whileTap={{ scale: 0.75 }}
-                    onClick={addCart(products.id)}
+                    //onClick={addCart(products.id)}
                     className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
                     <BiLock color="white" size={20} />{" "}
