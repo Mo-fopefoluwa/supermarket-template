@@ -84,7 +84,7 @@ const PopularProducts = () => {
                     alt=""
                   />
                 </motion.span>
-                <div className="absolute translate-y-100 hover:translate-y-50 transition-all ease-in-out duration-200 bg-[#e8ecf2] bg-opacity-75 top-2 left-4">
+                <div className="absolute translate-y-[400px]  w-[100%] h=[100%] hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
                   <span className=" pt-4 flex flex-col gap-4">
                     <p className="font-semibold text-base md:text-[1.2rem]">
                       {title}
