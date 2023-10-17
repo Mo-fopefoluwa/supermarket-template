@@ -44,14 +44,15 @@ const PopularProducts = () => {
     <div className="px-[2rem] md:px-[3rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
       <div className="flex flex-row justify-between items-center">
         <h2
-          style={{ color: mode === "dark" ? "white" : "" }}
-          className="font-semibold text-[1.6rem]"
+          style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+          className="font-bold text-[#1e1700] text-[1.6rem]"
         >
           Popular Products
         </h2>
         <Link
+          style={{ backgroundColor: mode === "dark" ? "#f0b900" : "" }}
           to={"/category"}
-          className="bg-[#40aa54] text-white flex justify-center font-semibold rounded-full w-[25%] md:w-[10%] py-1"
+          className="bg-[#d2a200] text-[#1e1700] flex justify-center font-semibold rounded-full w-[25%] md:w-[10%] py-1"
         >
           See all
         </Link>
@@ -66,8 +67,8 @@ const PopularProducts = () => {
             return (
               <div
                 key={index}
-                style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}
-                className="bg-white w-full h-full flex flex-col gap-2 ring-2 ring-gray-300 rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
+                style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
+                className="bg-[#e8ecf2] w-full h-full flex flex-col gap-2 ring-2 ring-[#505050] rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
               >
                 {" "}
                 <motion.span
@@ -85,10 +86,16 @@ const PopularProducts = () => {
                 </motion.span>
                 <span className=" pt-4 flex flex-col gap-4">
                   <p className="font-semibold text-[1.2rem]">{title}</p>
-                  <p className="text-gray-400 mt-[-.6rem] text-[1rem]">
+                  <p
+                    style={{ color: mode === "dark" ? "" : "" }}
+                    className="text-[#505050] mt-[-.6rem] text-[1rem]"
+                  >
                     {weight}
                   </p>
-                  <p className="font-bold pt-[.4rem] text-[1.2rem]">
+                  <p
+                    style={{ color: mode === "dark" ? "" : "" }}
+                    className="font-bold pt-[.4rem] text-[#00f041] text-[1.2rem]"
+                  >
                     N {price}
                   </p>
                 </span>
@@ -96,14 +103,14 @@ const PopularProducts = () => {
                   <span className="flex flex-row">
                     <motion.button
                       whileTap={{ scale: 0.75 }}
-                      className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
+                      className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
                     >
                       <BiMinus size={20} />
                     </motion.button>
                     <p className="px-3 font-bold">2</p>
                     <motion.button
                       whileTap={{ scale: 0.75 }}
-                      className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
+                      className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
                     >
                       <BiPlus size={20} />
                     </motion.button>
@@ -111,9 +118,9 @@ const PopularProducts = () => {
                   <motion.button
                     whileTap={{ scale: 0.75 }}
                     //onClick={addCart(products.id)}
-                    className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
+                    className="bg-[#f0b900] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                   >
-                    <BiLock color="white" size={20} />{" "}
+                    <BiLock color="#1e1700" size={20} />{" "}
                   </motion.button>
                 </span>
               </div>

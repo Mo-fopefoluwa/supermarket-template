@@ -16,11 +16,11 @@ const LightSwitch = () => {
             onClick={toggleMode}
             className={`${
               mode === "dark" ? "bg-blue-600" : "bg-gray-200"
-            } relative inline-flex h-6 w-14 md:h-8  items-center rounded-full`}
+            } relative inline-flex h-4 sm:h-6 w-12 sm:w-14 md:h-8  items-center rounded-full`}
           >
             <span
               className={`${
-                mode === "dark" ? "translate-x-6" : "translate-x-1"
+                mode === "dark" ? "translate-x-8" : "translate-x-1"
               } inline-block h-4 w-4 md:h-[1.25rem] md:w-[1.25rem] transform rounded-full z-10 bg-white transition`}
             />
             <span className="flex flex-row w-full absolute px-2 justify-between items-center">

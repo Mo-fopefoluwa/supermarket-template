@@ -26,8 +26,8 @@ const Nav = () => {
 
   return (
     <div
-      style={{ backgroundColor: mode === "dark" ? "black" : "" }}
-      className="fixed bg-white top-20 z-10 left-0 w-[100%] h-[100vh] text-center"
+      style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
+      className="fixed bg-[#e8ecf2] top-20 z-10 left-0 w-[100%] h-[100vh] text-center"
     >
       <Transition
         as={Fragment}
@@ -41,7 +41,7 @@ const Nav = () => {
         <Menu.Items className="flex flex-col gap-8 items-center justify-center">
           {navs.map((link) => (
             <div
-              style={{ color: mode === "dark" ? "white" : "" }}
+              style={{ color: mode === "dark" ? "#f2c220" : "" }}
               className="px-1 py-4 w-[100%] capitalize "
             >
               <Menu.Item>
@@ -49,7 +49,7 @@ const Nav = () => {
                   <Link
                     to={link.link}
                     className={`${
-                      active ? "bg-[#40aa54] text-white" : ""
+                      active ? "bg-[#785c00] text-white" : ""
                     } group w-full items-center font-bold  rounded-md px-16 py-2`}
                   >
                     {link.name}
@@ -69,7 +69,7 @@ const Nav = () => {
                   <Link
                     to={"/dashboard"}
                     className={`${
-                      active ? "bg-[#40aa54] text-white" : ""
+                      active ? "bg-[#785c00] text-white" : ""
                     } group w-full items-center font-bold  rounded-md px-16 py-2`}
                   >
                     Admin

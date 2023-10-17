@@ -44,15 +44,15 @@ const Packages = () => {
       <div>
         <motion.div
           whileTap={{ scale: 0.75 }}
-          className=" bg-[#40aa54] w-[10%] lg:w-[5%] rounded-md p-2 mt-[2rem] ml-8"
+          className=" bg-[#f0b900] w-[10%] lg:w-[5%] rounded-md p-2 mt-[2rem] ml-8"
         >
           <Link to={"/"}>
             <BiArrowToLeft color="white" size={35} />
           </Link>
         </motion.div>
         <h2
-          style={{ color: mode === "dark" ? "white" : "" }}
-          className="px-12 text-[1.4rem] font-bold pt-[4rem]"
+          style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+          className=" px-12 pt-[4rem] text-[1.2rem] md:text-[1.8rem] text-[#1e1700] font-bold"
         >
           Packages specially curated for you
         </h2>
@@ -67,7 +67,7 @@ const Packages = () => {
                 <div
                   key={index}
                   style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}
-                  className="bg-white w-full h-full flex flex-col gap-2 ring-2 ring-gray-300 rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
+                  className="bg-[#e8ecf2] w-full h-full flex flex-col gap-2 ring-2 ring-[#505050] rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
                 >
                   {" "}
                   <motion.span
@@ -85,35 +85,41 @@ const Packages = () => {
                   </motion.span>
                   <span className="flex flex-col gap-4 pt-4">
                     <p className="font-semibold text-[1.2rem]">{title}</p>
-                    <p className="text-gray-400 mt-[-.6rem] text-[1rem]">
+                    <p
+                      style={{ color: mode === "dark" ? "" : "" }}
+                      className="text-[#505050] mt-[-.6rem] text-[1rem]"
+                    >
                       {category}
                     </p>
-                    <p className="font-bold pt-[.4rem] text-[1.2rem]">
+                    <p
+                      style={{ color: mode === "dark" ? "" : "" }}
+                      className="font-bold pt-[.4rem] text-[#00f041] text-[1.2rem]"
+                    >
                       N {price}
                     </p>
                   </span>
-                  <span className="flex flex-row justify-between">
+                  <span className="flex flex-row justify-between py-4">
                     <span className="flex flex-row">
                       <motion.button
                         whileTap={{ scale: 0.75 }}
-                        className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
+                        className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
                       >
                         <BiMinus size={20} />
                       </motion.button>
                       <p className="px-3 font-bold">2</p>
                       <motion.button
                         whileTap={{ scale: 0.75 }}
-                        className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
+                        className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
                       >
                         <BiPlus size={20} />
                       </motion.button>
                     </span>
                     <motion.button
                       whileTap={{ scale: 0.75 }}
-                      // onClick={addCart(packagee.id)}
-                      className="bg-[#287436] h-[30px] flex justify-center items-center rounded-full w-[30px]"
+                      //onClick={addCart(products.id)}
+                      className="bg-[#f0b900] h-[30px] flex justify-center items-center rounded-full w-[30px]"
                     >
-                      <BiLock color="white" size={20} />{" "}
+                      <BiLock color="#1e1700" size={20} />{" "}
                     </motion.button>
                   </span>
                 </div>

@@ -29,8 +29,8 @@ const CategoryCards = () => {
   return (
     <div className="px-16 py-8">
       <h2
-        style={{ color: mode === "dark" ? "white" : "" }}
-        className=" text-[1.6rem] font-semibold"
+        style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+        className=" text-[1.6rem] text-[#1e1700] font-bold"
       >
         Category
       </h2>
@@ -39,10 +39,10 @@ const CategoryCards = () => {
           const { name, icon, urlParamName } = category;
           return (
             <motion.button
-              style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
-              className="keen-slider__slide number-slide hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
+              style={{ backgroundColor: mode === "dark" ? "#cfcfcf" : "" }}
+              className="keen-slider__slide number-slide hover:ring-4 text-[1e1700] ring-[#f9e59f] transition-all bg-[#d4d4d4] rounded h-[100px] flex flex-col items-center justify-center gap-4"
             >
-              <p className="text-[2.5rem]"> {icon} </p>
+              <p className="text-[2.5rem] "> {icon} </p>
               <p className="capitalize font-bold ">{name}</p>
             </motion.button>
           );

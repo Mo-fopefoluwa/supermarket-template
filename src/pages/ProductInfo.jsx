@@ -49,74 +49,87 @@ const ProductInfo = () => {
 
   return (
     <div className="px-4 md:px-8 lg:px-12 py-10 h-screen pt-[4rem]">
-      {products && (
-        <div>
-          <div className="flex flex-col md:flex-row gap-8 items-center justify-start md:justify-center">
-            <span className="w-[100%] md:w-[30%] h-[300px] rounded-md overflow-hidden">
-              <img
-                className="w-full h-full object-fit hover:scale-105 rounded-md"
-                src={products.imageUrl}
-                alt="product image"
-              />
+      <div>
+        <div className="flex flex-col md:flex-row gap-8 items-center justify-start md:justify-center">
+          <span className="w-[100%] md:w-[30%] h-[300px] rounded-md overflow-hidden">
+            <img
+              className="w-full h-full object-fit hover:scale-105 rounded-md"
+              src={products.imageUrl}
+              alt="product image"
+            />
+          </span>
+          <div className="w-[100%] md:w-[40%]">
+            <span className="flex flex-col gap-4">
+              <p className="text-[1.4rem] text-[#1e1700] md:text-[1.6rem] font-bold ">
+                {products.title}{" "}
+              </p>
+              <span className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                {" "}
+                <p
+                  style={{ color: mode === "dark" ? "" : "" }}
+                  className="text-[#505050] mt-[-.6rem] text-[1rem]"
+                >
+                  weight : {products.weight}kg
+                </p>
+                <p
+                  style={{ color: mode === "dark" ? "" : "" }}
+                  className="text-[#505050] mt-[-.6rem] text-[1rem]"
+                >
+                  {products.category}{" "}
+                </p>
+              </span>
             </span>
-            <div className="w-[100%] md:w-[40%]">
-              <span className="flex flex-col gap-4">
-                <p className="text-[1.4rem] md:text-[1.6rem] font-bold ">
-                  {products.title}{" "}
-                </p>
-                <span className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  {" "}
-                  <p className="text-gray-700 font-semibold ">
-                    weight : {products.weight}kg
-                  </p>
-                  <p className="text-base text-gray-700 font-semibold ">
-                    {products.category}{" "}
-                  </p>
-                </span>
+            <span className="flex flex-row items-center justify-between pt-4">
+              <p
+                style={{ color: mode === "dark " ? "" : "" }}
+                className="text-[#00f041] font-bold text-[1.4rem] md:text-[1.6rem]"
+              >
+                N {products.price}
+              </p>
+
+              <span className="flex flex-row">
+                <motion.button
+                  whileTap={{ scale: 0.75 }}
+                  className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                >
+                  <BiMinus size={20} />
+                </motion.button>
+                <p className="px-3 font-bold">2</p>
+                <motion.button
+                  whileTap={{ scale: 0.75 }}
+                  className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                >
+                  <BiPlus size={20} />
+                </motion.button>
               </span>
-              <span className="flex flex-row items-center justify-between pt-4">
-                <p className="text-[#40aa54] font-bold text-[1.4rem] md:text-[1.6rem]">
-                  N {products.price}
-                </p>
-                <span className="flex flex-row">
-                  <motion.button
-                    whileTap={{ scale: 0.75 }}
-                    className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
-                  >
-                    <BiMinus size={20} />
-                  </motion.button>
-                  <p className="px-3 font-bold">2</p>
-                  <motion.button
-                    whileTap={{ scale: 0.75 }}
-                    className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300"
-                  >
-                    <BiPlus size={20} />
-                  </motion.button>
-                </span>
-              </span>
-            </div>
-          </div>
-          <div className="pt-8 md:pl-[4rem] lg:pl-[8rem]">
-            <p className="font-bold text-lg">Product description</p>
-            <p className="text-gray-500 text-base"> description </p>
-          </div>
-          <div className="flex flex-row gap-4 items-center justify-center pt-8">
-            <motion.button
-              onClick={addCart(products)}
-              whileTap={{ scale: 0.75 }}
-              className="w-[15%]"
-            >
-              <BiCartAdd size={30} />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.75 }}
-              className="w-[85%] md:w-[50%] bg-[#40aa54] text-white font-semibold text-base rounded-md py-2"
-            >
-              Buy Now
-            </motion.button>
+            </span>
           </div>
         </div>
-      )}
+        <div
+          style={{ color: mode === "dark " ? "" : "" }}
+          className="pt-8 md:pl-[4rem] lg:pl-[8rem]"
+        >
+          <p className="font-bold text-[#505050] text-lg">
+            Product description
+          </p>
+          <p className="text-[#6a6a6a] text-base"> description </p>
+        </div>
+        <div className="flex flex-row gap-4 items-center justify-center pt-8">
+          <motion.button
+            onClick={addCart(products)}
+            whileTap={{ scale: 0.75 }}
+            className="w-[15%]"
+          >
+            <BiCartAdd color="#785c00" size={30} />
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.75 }}
+            className="w-[85%] md:w-[50%] bg-[#f0b900] text-[#1e1700] font-semibold text-base rounded-md py-2"
+          >
+            Buy Now
+          </motion.button>
+        </div>
+      </div>
     </div>
   );
 };
