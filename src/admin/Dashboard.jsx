@@ -17,26 +17,26 @@ function Dashboard() {
           <div className="flex flex-wrap justify-center items-center -m-4 text-center">
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div
-                className=" border-2 hover:shadow-green-400 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl"
+                className=" border-2 hover:shadow-[#0037f0] shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-[#e8ecf2] border-gray-300    px-4 py-3 rounded-xl"
                 style={{
-                  backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                  color: mode === "dark" ? "white" : "",
+                  backgroundColor: mode === "dark" ? "#7a7679" : "",
+                  color: mode === "dark" ? "#e8ecf2" : "",
                 }}
               >
                 <div
-                  className="text-green-600 w-12 h-12 mb-3 inline-block"
+                  className="text-[#0037f0] w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <AiFillShopping size={50} />
                 </div>
                 <h2
                   className="title-font font-medium text-3xl text-black fonts1"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  style={{ color: mode === "dark" ? "#e8ecf2" : "" }}
                 >
                   {order.length}
                 </h2>
                 <p
-                  className=" text-green-600  font-bold"
+                  className=" text-[#0037f0] font-bold"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Total Orders
@@ -45,26 +45,26 @@ function Dashboard() {
             </div>
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div
-                className=" border-2 hover:shadow-green-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl"
+                className=" border-2 hover:shadow-[#f000af] shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-[#e8ecf2] border-gray-300    px-4 py-3 rounded-xl"
                 style={{
-                  backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+                  backgroundColor: mode === "dark" ? "#7a7679" : "",
                   color: mode === "dark" ? "white" : "",
                 }}
               >
                 <div
-                  className="text-green-600 w-12 h-12 mb-3 inline-block"
+                  className="text-[#f000af] w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <FaUserTie size={50} />
                 </div>
                 <h2
                   className="title-font font-medium text-3xl text-black fonts1"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  style={{ color: mode === "dark" ? "#e8ecf2" : "" }}
                 >
                   {user.length}
                 </h2>
                 <p
-                  className=" text-green-600  font-bold"
+                  className=" text-[#f000af]  font-bold"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Total Users
@@ -73,27 +73,27 @@ function Dashboard() {
             </div>
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div
-                className=" border-2 hover:shadow-green-400 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl"
+                className=" border-2 hover:shadow-[#0037f0] shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-[#e8ecf2] border-gray-300    px-4 py-3 rounded-xl"
                 style={{
-                  backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                  color: mode === "dark" ? "white" : "",
+                  backgroundColor: mode === "dark" ? "#7a7679" : "",
+                  color: mode === "dark" ? "#e8ecf2" : "",
                 }}
               >
                 <div
-                  className="text-green-600 w-12 h-12 mb-3 inline-block"
+                  className="text-[#0037f0] w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <MdOutlineProductionQuantityLimits size={50} />
                 </div>
                 <h2
-                  className="title-font font-medium text-3xl text-black fonts1"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className="title-font font-medium text-3xl text-[#0f193b] fonts1"
+                  style={{ color: mode === "dark" ? "#e8ecf2" : "" }}
                 >
                   {product.length}
                 </h2>
                 <p
-                  className=" text-green-600  font-bold"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className=" text-[#0037f0]  font-bold"
+                  style={{ color: mode === "dark" ? "" : "" }}
                 >
                   Total Products
                 </p>

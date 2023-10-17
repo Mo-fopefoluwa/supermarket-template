@@ -35,21 +35,21 @@ const PopularBundle = () => {
       >
         <h2
           style={{ color: mode === "dark" ? "" : "" }}
-          className="font-bold text-[#1e1700] text-[1.6rem]"
+          className="font-bold text-[#1e1700] text-[1.2rem] md:text-[1.6rem]"
         >
           Popular Bundle Pack
         </h2>
         {loading ? (
           <Loader />
         ) : (
-          <div className="py-16 px-12 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
+          <div className="py-16 px-8 md:px-4 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
             {packagee.map((item, index) => {
               const { title, price, category, imageUrl } = item;
               return (
                 <div
                   key={index}
                   style={{ backgroundColor: mode === "dark" ? "#575757" : "" }}
-                  className="bg-[#e8ecf2] w-full h-full flex flex-col gap-2 ring-2 ring-[#505050] rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
+                  className="bg-[#e8ecf2] w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-4 md:px-6 py-6 md:py-8"
                 >
                   {" "}
                   <motion.span
@@ -75,33 +75,18 @@ const PopularBundle = () => {
                     </p>
                     <p
                       style={{ color: mode === "dark" ? "" : "" }}
-                      className="font-bold pt-[.4rem] text-[#00f041] text-[1.2rem]"
+                      className="font-bold pt-[.4rem] text-[#0037f0] text-[1.2rem]"
                     >
                       N {price}
                     </p>
                   </span>
-                  <span className="flex flex-row justify-between py-4">
-                    <span className="flex flex-row">
-                      <motion.button
-                        whileTap={{ scale: 0.75 }}
-                        className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
-                      >
-                        <BiMinus size={20} />
-                      </motion.button>
-                      <p className="px-3 font-bold">2</p>
-                      <motion.button
-                        whileTap={{ scale: 0.75 }}
-                        className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
-                      >
-                        <BiPlus size={20} />
-                      </motion.button>
-                    </span>
+                  <span className="flex justify-center py-4">
                     <motion.button
                       whileTap={{ scale: 0.75 }}
                       //onClick={addCart(products.id)}
-                      className="bg-[#f0b900] h-[45px] flex justify-center items-center rounded-full w-[45px]"
+                      className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px]"
                     >
-                      <BiLock color="#785c00" size={26} />{" "}
+                      <BiLock color="#e8ecf2" size={26} />{" "}
                     </motion.button>
                   </span>
                 </div>

@@ -22,7 +22,7 @@ const UpdatePackage = () => {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-[#40aa54] bg-opacity-80 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="rounded-md bg-[#0037f0] bg-opacity-80 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Update Package
         </button>
@@ -136,7 +136,7 @@ const UpdatePackage = () => {
                   <div className="mt-[4rem]">
                     <button
                       type="button"
-                      className="inline-flex w-[100%] justify-center rounded-md border border-transparent bg-[#40aa54] px-4 py-[.6rem] text-sm font-medium text-white hover:bg-[#1f7c30] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#31e252] focus-visible:ring-offset-2"
+                      className="inline-flex w-[100%] justify-center rounded-md border border-transparent bg-[#0037f0] px-4 py-[.6rem] text-sm font-medium text-white hover:bg-[#1f7c30] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#31e252] focus-visible:ring-offset-2"
                       onClick={updatePackage}
                     >
                       Update!

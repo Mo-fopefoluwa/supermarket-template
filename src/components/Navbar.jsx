@@ -45,23 +45,26 @@ const Navbar = () => {
 
   return (
     <header className="relative flex flex-row justify-between items-center px-8 py-4 md:px-16 lg:px-20 md:py-6">
-      <Menu as="div" className="relative md:hidden inline-block text-center">
-        {({ open }) => (
-          <>
-            <Menu.Button
-              style={{ color: mode === "dark" ? "#f2c220" : "" }}
-              className="w-full"
-            >
-              {open ? <IoCloseSharp size={28} /> : <HiMenuAlt1 size={28} />}
-            </Menu.Button>
-            {open && <Nav />}
-          </>
-        )}
-      </Menu>
+      <span className="flex flex-row items-center gap-2 md:hidden">
+        <Menu as="div" className="relative  inline-block text-center">
+          {({ open }) => (
+            <>
+              <Menu.Button
+                style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+                className="w-full"
+              >
+                {open ? <IoCloseSharp size={30} /> : <HiMenuAlt1 size={30} />}
+              </Menu.Button>
+              {open && <Nav />}
+            </>
+          )}
+        </Menu>
+        <LightSwitch />
+      </span>
       <p className="flex flex-row items-center pointer-events-none">
         <FaOpencart color="#0037f0" size={30} />{" "}
-        <span className="text-[#f0b900] font-semibold text-[1.2rem]">
-          Market
+        <span className="text-[#f0b900]/80 font-semibold text-[1rem]">
+          market
         </span>
       </p>
 
@@ -97,8 +100,11 @@ const Navbar = () => {
         </nav>
       </div>
       {/* mobile screens */}
-      <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
-        <LightSwitch />
+      <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
+        <span className="hidden md:block">
+          {" "}
+          <LightSwitch />{" "}
+        </span>
         <Link className="relative" to={"/cart"}>
           <span className="absolute right-0 top-[-1rem] flex h-[1.4rem] w-[1.4rem]">
             <span className="relative  font-semibold  inline-flex h-full w-full rounded-full px-[.6rem] py-[.6rem] bg-red-500"></span>
