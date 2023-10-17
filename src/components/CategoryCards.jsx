@@ -51,8 +51,7 @@ const CategoryCards = () => {
       </h2>
       <div ref={sliderRef} className="keen-slider py-[2rem] px-4 md:px-6 ">
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide1 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -60,8 +59,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Meat & Fish</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide2  hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -69,8 +67,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Vegetables</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide3 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -78,8 +75,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Medicine</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide4 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -87,8 +83,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Baby Care</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide5 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -96,8 +91,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Office</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide6 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -105,8 +99,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Beauty</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide7 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -114,8 +107,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Gardening</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide8 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -123,8 +115,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Fruits</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide9 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -132,8 +123,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Food and Oils</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide10 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -141,8 +131,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Cutleries</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide11 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -150,8 +139,7 @@ const CategoryCards = () => {
           <p className="font-bold text-[##40aa54]">Milk & Dairies</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide12 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
@@ -159,8 +147,7 @@ const CategoryCards = () => {
           <p className="font-bold ">Snacks & Branded Foods</p>
         </motion.button>
         <motion.button
-          whileHover={{}}
-          whileTap={{ scale: 0.6 }}
+          whileTap={{ scale: 0.75 }}
           style={{ backgroundColor: mode === "dark" ? "#88888a" : "" }}
           className="keen-slider__slide number-slide13 hover:ring-4 ring-[#40aa54] transition-all bg-gray-200 rounded h-[100px] flex flex-col items-center justify-center gap-4"
         >
