@@ -118,9 +118,9 @@ const PopularProducts = () => {
                   <motion.button
                     whileTap={{ scale: 0.75 }}
                     //onClick={addCart(products.id)}
-                    className="bg-[#f0b900] h-[30px] flex justify-center items-center rounded-full w-[30px]"
+                    className="bg-[#f0b900] h-[45px] flex justify-center items-center rounded-full w-[45px]"
                   >
-                    <BiLock color="#1e1700" size={20} />{" "}
+                    <BiLock color="#785c00" size={26} />{" "}
                   </motion.button>
                 </span>
               </div>
