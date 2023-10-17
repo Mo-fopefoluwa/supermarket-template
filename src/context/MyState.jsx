@@ -32,6 +32,18 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import {
+  GiBowlOfRice,
+  GiForkKnifeSpoon,
+  GiFriedFish,
+  GiKiwiFruit,
+  GiLipstick,
+  GiMedicines,
+  GiMilkCarton,
+  GiOpenedFoodCan,
+  GiVacuumCleaner,
+} from "react-icons/gi";
+import { BiSolidBabyCarriage } from "react-icons/bi";
 
 const MyState = (props) => {
   const [mode, setMode] = useState("light");
@@ -572,58 +584,68 @@ const MyState = (props) => {
     {
       id: 1,
       name: "Fruits",
+      icon: <GiKiwiFruit />,
       urlParamName: "fruits",
     },
     ,
     {
       id: 2,
       name: "food & oils",
+      icon: <GiBowlOfRice />,
       urlParamName: "food-and-oils",
     },
 
     {
       id: 3,
       name: "baby care",
+      icon: <BiSolidBabyCarriage />,
       urlParamName: "baby",
     },
     ,
     {
       id: 4,
       name: "beauty",
+      icon: <GiLipstick />,
       urlParamName: "beauty",
     },
     ,
     {
       id: 5,
       name: "meat & fish",
+      icon: <GiFriedFish />,
       urlParamName: "meat-and-fish",
     },
     {
       id: 6,
       name: "medicine",
+      icon: <GiMedicines />,
       urlParamName: "medicine",
     },
     ,
     {
       id: 7,
       name: "cutleries",
+      icon: <GiForkKnifeSpoon />,
       urlParamName: "cutleries",
     },
     {
       id: 8,
       name: "milk & dairies",
+      icon: <GiMilkCarton />,
       urlParamName: "milk",
     },
     ,
     {
       id: 9,
       name: "snacks & branded foods",
-      urlParamName: "",
+      icon: <GiOpenedFoodCan />,
+      urlParamName: "snacks",
     },
     ,
     {
       id: 10,
       name: "cleaning & household",
+      icon: <GiVacuumCleaner />,
       urlParamName: "cleaning",
     },
   ];

@@ -71,7 +71,7 @@ export const addProductToCart = (new_cart_item) => async (dispatch) => {
         id: newItemId,
         title: new_cart_item.title,
         price: new_cart_item.price,
-        imageURL: new_cart_item.imageURL,
+        imageUrl: new_cart_item.imageURL,
         category: new_cart_item.category,
         qtyInCart: 1,
       });

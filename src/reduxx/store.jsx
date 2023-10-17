@@ -7,11 +7,12 @@ import {
   addItemToCartReducer,
   listCartItemsReducer,
 } from "../reducers/cartReducers";
+import cartSlice from "./cartSlice";
 
 const reducer = combineReducers({
-  productsList: productListReducer,
-  cartItemsList: listCartItemsReducer,
-  addToCart: addItemToCartReducer,
+  //productsList: productListReducer,
+  cart: cartSlice,
+  // addToCart: addItemToCartReducer,
 });
 
 const initialState = {};

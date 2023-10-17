@@ -44,7 +44,20 @@ const Navbar = () => {
   }, [dispatch]);
 
   return (
-    <header className="relative flex flex-row justify-between items-center px-12 py-4 md:px-20 md:py-6">
+    <header className="relative flex flex-row justify-between items-center px-12 py-4 md:px-16 lg:px-20 md:py-6">
+      <Menu as="div" className="relative md:hidden inline-block text-center">
+        {({ open }) => (
+          <>
+            <Menu.Button
+              style={{ color: mode === "dark" ? "white" : "" }}
+              className="w-full"
+            >
+              {open ? <IoCloseSharp size={28} /> : <HiMenuAlt1 size={28} />}
+            </Menu.Button>
+            {open && <Nav />}
+          </>
+        )}
+      </Menu>
       <p className="flex flex-row items-center pointer-events-none">
         <FaOpencart color="#40aa54" size={50} />{" "}
         <span className="text-[#fa8b0b] font-semibold text-[1.2rem]">
@@ -57,12 +70,12 @@ const Navbar = () => {
         style={{ color: mode === "dark" ? "white" : "" }}
         className="md:flex flex-row gap-16 hidden"
       >
-        <nav className="flex flex-row gap-8 capitalize">
+        <nav className="flex flex-row gap-4 md:gap-8 capitalize">
           {navs.map((nav) => {
             return (
               <Link
                 style={{ color: mode === "dark" ? "#76c750" : "" }}
-                className="text-base font-bold text-[#40aa54] hover:text-[#40aa54]/60 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
+                className="text-[.8rem] lg:text-base font-semibold text-[#40aa54] hover:text-[#40aa54]/60 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
                 to={nav.link}
               >
                 {nav.name}
@@ -73,7 +86,7 @@ const Navbar = () => {
           {user?.user?.email === "fopefaokunla@gmail.com" ? (
             <Link
               style={{ color: mode === "dark" ? "#76c750" : "" }}
-              className="text-base font-bold text-[#40aa54] hover:text-[#40aa54]/60 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
+              className="text-[.8rem] md:text-base font-semibold text-[#40aa54] hover:text-[#40aa54]/60 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
               to={"/dashboard"}
             >
               Admin
@@ -113,19 +126,6 @@ const Navbar = () => {
                 />
               </Menu.Button>
               {open && <UserNav />}
-            </>
-          )}
-        </Menu>
-        <Menu as="div" className="relative md:hidden inline-block text-center">
-          {({ open }) => (
-            <>
-              <Menu.Button
-                style={{ color: mode === "dark" ? "white" : "" }}
-                className="w-full"
-              >
-                {open ? <IoCloseSharp size={28} /> : <HiMenuAlt1 size={28} />}
-              </Menu.Button>
-              {open && <Nav />}
             </>
           )}
         </Menu>
