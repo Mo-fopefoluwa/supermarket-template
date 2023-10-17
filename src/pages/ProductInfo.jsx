@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import myContext from "../context/myContext";
 import { BiCartAdd, BiMinus, BiPlus } from "react-icons/bi";
 import { motion } from "framer-motion";
@@ -6,6 +6,8 @@ import { fireDB } from "../Firebase/Firebase";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../reduxx/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { doc, getDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const ProductInfo = () => {
   const context = useContext(myContext);
@@ -14,16 +16,16 @@ const ProductInfo = () => {
   const [products, setProducts] = useState("");
 
   const getProductData = async () => {
-    setLoading(true);
+    //setLoading(true);
     try {
       const productTemp = await getDoc(doc(fireDB, "products", params.id));
       // console.log(productTemp)
       setProducts(productTemp.data());
       console.log(productTemp.data());
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      //setLoading(false);
     }
   };
 
