@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 //import Modal from "../component/modal/Modal";
 import { HiArrowLeft } from "react-icons/hi";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 import myContext from "../context/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../reduxx/cartSlice";
@@ -82,20 +83,26 @@ const Cart = () => {
                     </span>
                     <span className="flex flex-row justify-between">
                       <span className="flex flex-row">
-                        <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                          <BiMinus />
-                        </button>
-                        <p className="px-3 font-bold">{qty}</p>
-                        <button className="ring-2 ring-[#40aa54]  px-3 rounded-sm hover:bg-[#40aa54]/80 hover:text-white font-semibold transition-all hover:ring-green-300">
-                          <BiPlus />
-                        </button>
+                        <motion.button
+                          whileTap={{ scale: 0.75 }}
+                          className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                        >
+                          <BiMinus size={20} />
+                        </motion.button>
+                        <p className="px-3 font-bold">{qty} </p>
+                        <motion.button
+                          whileTap={{ scale: 0.75 }}
+                          className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                        >
+                          <BiPlus size={20} />
+                        </motion.button>
                       </span>
                     </span>
                   </div>
                   <div className="flex flex-col gap-8 items-end">
                     <button onClick={() => handleCartDel(item.id)}>
                       {" "}
-                      <BiTrash size={22} />
+                      <BiTrash color="red" size={22} />
                     </button>
                     <p className="font-bold">N{item.price}</p>
                   </div>
