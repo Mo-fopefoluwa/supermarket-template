@@ -51,8 +51,8 @@ const Category = () => {
           </Link>
         </motion.div>
         <h2
-          style={{ color: mode === "dark" ? "#fbedbf" : "" }}
-          className=" px-12 pt-[4rem] text-[1.2rem] md:text-[1.8rem] text-[#1e1700] font-bold"
+          style={{ color: mode === "dark" ? "#dfe6fd" : "" }}
+          className=" px-12 pt-[4rem] text-[1.2rem] md:text-[1.8rem] text-[#000e3c] font-bold"
         >
           What would you get today? {user.name}
         </h2>
