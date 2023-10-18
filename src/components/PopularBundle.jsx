@@ -48,17 +48,10 @@ const PopularBundle = () => {
               return (
                 <div
                   key={index}
-                  style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm pb-4 md:pb-6"
+                  className="group overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm pb-4 md:pb-6"
                 >
                   {" "}
-                  <motion.span
-                    whileTap={{ scale: 0.75 }}
-                    onClick={() =>
-                      (window.location.href = `/productinfo/${packagee.id}`)
-                    }
-                    className=" w-full h-[250px]"
-                  >
+                  <motion.span className=" w-full h-[250px]">
                     <img
                       className="w-full overflow-hidden relative h-[200px] rounded-md object-fit hover:scale-105 transition-all ease-in-out duration-100"
                       src={imageUrl}
@@ -69,7 +62,7 @@ const PopularBundle = () => {
                       onClick={() =>
                         (window.location.href = `/productinfo/${packagee.id}`)
                       }
-                      className="absolute translate-y-[225px]  w-[100%] h=[100%] group-hover:translate-y-[100px] transition-all ease-in-out duration-400 bg-[#e8ecf2] pl-4 md:pl-8 py-4 bg-opacity-80 top-2 left-0"
+                      className="absolute translate-y-[225px]  w-[100%] h=[100%] group-hover:translate-y-[80px] transition-all ease-in-out duration-400 bg-[#f9e59f] pl-4 md:pl-8 py-4 bg-opacity-80 top-2 left-0"
                     >
                       <span className=" pt-4 flex flex-col gap-4">
                         <p className="font-semibold text-base md:text-[1.2rem]">

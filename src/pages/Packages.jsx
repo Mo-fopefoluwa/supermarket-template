@@ -60,62 +60,62 @@ const Packages = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="py-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
+          <div className="py-16 px-4 md:px-8 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
             {packagee.map((item, index) => {
               const { title, price, category, imageUrl } = item;
               return (
                 <div
                   key={index}
-                  style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm pb-4 md:pb-6"
+                  className="group bg-[#e8ecf2]  overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm pb-4 md:pb-6"
                 >
                   {" "}
-                  <motion.span
-                    whileTap={{ scale: 0.75 }}
-                    onClick={() =>
-                      (window.location.href = `/productinfo/${packagee.id}`)
-                    }
-                    className=" w-full h-[250px]"
-                  >
+                  <motion.span className=" w-full h-[250px]">
                     <img
                       className="w-full overflow-hidden relative h-[200px] rounded-md object-fit hover:scale-105 transition-all ease-in-out duration-100"
                       src={imageUrl}
                       alt=""
                     />
-                    <div
-                      whileTap={{ scale: 0.75 }}
-                      onClick={() =>
-                        (window.location.href = `/productinfo/${packagee.id}`)
-                      }
-                      className="absolute translate-y-[225px]  w-[100%] h=[100%] group-hover:translate-y-[100px] transition-all ease-in-out duration-400 bg-[#e8ecf2] pl-4 md:pl-8 py-4 bg-opacity-80 top-2 left-0"
-                    >
-                      <span className=" pt-4 flex flex-col gap-4">
-                        <p className="font-semibold text-base md:text-[1.2rem]">
-                          {title}
-                        </p>
-                        <p
-                          style={{ color: mode === "dark" ? "" : "" }}
-                          className="text-[#505050] mt-[-.4rem] text-[.8rem] md:text-[1rem]"
-                        >
-                          {category}
-                        </p>
-                      </span>
-                      <span className="flex flex-col md:flex-row gap-6 md:justify-between py-4">
-                        <p
-                          style={{ color: mode === "dark" ? "" : "" }}
-                          className="font-bold pb-2 text-[#0037f0] text-[1rem] md:text-[1.2rem]"
-                        >
-                          N {price}
-                        </p>
-                      </span>
-                      <motion.button
+                    <motion.span className=" w-full h-[250px]">
+                      <img
+                        className="w-full overflow-hidden relative h-[200px] rounded-md object-fit hover:scale-105 transition-all ease-in-out duration-100"
+                        src={imageUrl}
+                        alt=""
+                      />
+                      <div
                         whileTap={{ scale: 0.75 }}
-                        //onClick={addCart(products.id)}
-                        className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px] mt-4"
+                        onClick={() =>
+                          (window.location.href = `/productinfo/${packagee.id}`)
+                        }
+                        className="absolute translate-y-[225px]  w-[100%] h=[100%] group-hover:translate-y-[80px] transition-all ease-in-out duration-400 bg-[#e8ecf2] pl-4 md:pl-8 py-4 bg-opacity-80 top-2 left-0"
                       >
-                        <BiLock color="#e8ecf2" size={26} />{" "}
-                      </motion.button>
-                    </div>
+                        <span className=" pt-4 flex flex-col gap-4">
+                          <p className="font-semibold text-base md:text-[1.2rem]">
+                            {title}
+                          </p>
+                          <p
+                            style={{ color: mode === "dark" ? "" : "" }}
+                            className="text-[#505050] mt-[-.4rem] text-[.8rem] md:text-[1rem]"
+                          >
+                            {category}
+                          </p>
+                        </span>
+                        <span className="flex flex-col md:flex-row gap-6 md:justify-between py-4">
+                          <p
+                            style={{ color: mode === "dark" ? "" : "" }}
+                            className="font-bold pb-2 text-[#0037f0] text-[1rem] md:text-[1.2rem]"
+                          >
+                            N {price}
+                          </p>
+                        </span>
+                        <motion.button
+                          whileTap={{ scale: 0.75 }}
+                          //onClick={addCart(products.id)}
+                          className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px] mt-4"
+                        >
+                          <BiLock color="#e8ecf2" size={26} />{" "}
+                        </motion.button>
+                      </div>
+                    </motion.span>
                   </motion.span>
                 </div>
               );

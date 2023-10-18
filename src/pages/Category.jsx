@@ -60,7 +60,7 @@ const Category = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="py-16 px-12 md:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-8 md:gap-16">
+          <div className="py-16 px-4 md:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-8 md:gap-16">
             {product.map((products, index) => {
               const { title, price, weight, imageUrl } = products;
               return (
