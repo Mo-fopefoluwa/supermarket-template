@@ -49,7 +49,7 @@ const PopularBundle = () => {
                 <div
                   key={index}
                   style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
+                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-[320px] flex flex-col gap-2 rounded-md shadow-sm pb-4 md:pb-6"
                 >
                   {" "}
                   <motion.span
