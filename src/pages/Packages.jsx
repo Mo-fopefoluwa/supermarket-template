@@ -44,7 +44,7 @@ const Packages = () => {
       <div>
         <motion.div
           whileTap={{ scale: 0.75 }}
-          className=" bg-[#f0b900] w-[10%] lg:w-[5%] rounded-md p-2 mt-[2rem] ml-8"
+          className=" bg-[#4069f4] w-[10%] lg:w-[5%] rounded-md p-2 mt-[2rem] ml-8"
         >
           <Link to={"/"}>
             <BiArrowToLeft color="white" size={35} />
@@ -60,14 +60,14 @@ const Packages = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="py-16 px-8 md:px-4 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
+          <div className="py-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
             {packagee.map((item, index) => {
               const { title, price, category, imageUrl } = item;
               return (
                 <div
                   key={index}
                   style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                  className="bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
+                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
                 >
                   {" "}
                   <motion.span
@@ -82,8 +82,15 @@ const Packages = () => {
                       src={imageUrl}
                       alt=""
                     />
+                    <motion.button
+                      whileTap={{ scale: 0.75 }}
+                      //onClick={addCart(products.id)}
+                      className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px] pt-4"
+                    >
+                      <BiLock color="#e8ecf2" size={26} />{" "}
+                    </motion.button>
                   </motion.span>
-                  <div className="absolute translate-y-[400px]  w-[100%] h=[100%] hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
+                  <div className="absolute translate-y-[400px]  w-[100%] h-[100%] group-hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
                     <span className=" pt-4 flex flex-col gap-4">
                       <p className="font-semibold text-base md:text-[1.2rem]">
                         {title}

@@ -44,7 +44,13 @@ function DashboardTab() {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 hover:shadow-green-700 border-green-500 text-green-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                  style={{
+                    color: mode === "dark" ? "#4069f4" : "",
+                    boxShadow: mode === "dark" ? "#4069f4" : "",
+                    borderColor: mode === "dark" ? "#4069f4" : "",
+                    backgroundColor: mode === "dark" ? "#aeb1b5" : "",
+                  }}
+                  className="font-medium border-b-2 hover:shadow-[#0037f0] border-[#0037f0] text-[#0037f0] rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
                 >
                   <div className="flex gap-2 items-center">
                     <MdOutlineProductionQuantityLimits />
@@ -55,7 +61,13 @@ function DashboardTab() {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 hover:shadow-green-700 border-green-500 text-green-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                  style={{
+                    color: mode === "dark" ? "#4069f4" : "",
+                    boxShadow: mode === "dark" ? "#4069f4" : "",
+                    borderColor: mode === "dark" ? "#4069f4" : "",
+                    backgroundColor: mode === "dark" ? "#aeb1b5" : "",
+                  }}
+                  className="font-medium border-b-2 hover:shadow-[#0037f0] border-[#0037f0] text-[#0037f0] rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
                 >
                   <div className="flex gap-2 items-center">
                     <MdOutlineProductionQuantityLimits />
@@ -66,7 +78,13 @@ function DashboardTab() {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center "
+                  style={{
+                    color: mode === "dark" ? "#4069f4" : "",
+                    boxShadow: mode === "dark" ? "#4069f4" : "",
+                    borderColor: mode === "dark" ? "#4069f4" : "",
+                    backgroundColor: mode === "dark" ? "#aeb1b5" : "",
+                  }}
+                  className="font-medium border-b-2 border-[#0037f0] bg-[#605d5d12] text-[#0037f0]  hover:shadow-[#0037f0]  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <AiFillShopping /> Order
@@ -76,7 +94,13 @@ function DashboardTab() {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  style={{
+                    color: mode === "dark" ? "#4069f4" : "",
+                    boxShadow: mode === "dark" ? "#4069f4" : "",
+                    borderColor: mode === "dark" ? "#4069f4" : "",
+                    backgroundColor: mode === "dark" ? "#aeb1b5" : "",
+                  }}
+                  className="font-medium border-b-2 border-[#0037f0] bg-[#605d5d12] text-[#0037f0] rounded-lg text-xl  hover:shadow-[#0037f0] shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">
                     <FaUser /> Users

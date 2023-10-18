@@ -41,7 +41,7 @@ const Nav = () => {
         <Menu.Items className="flex flex-col gap-8 items-center justify-center">
           {navs.map((link) => (
             <div
-              style={{ color: mode === "dark" ? "#f2c220" : "" }}
+              style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
               className="px-1 py-4 w-[100%] capitalize "
             >
               <Menu.Item>
@@ -49,8 +49,8 @@ const Nav = () => {
                   <Link
                     to={link.link}
                     className={`${
-                      active ? "bg-[#785c00] text-white" : ""
-                    } group w-full items-center font-bold  rounded-md px-16 py-2`}
+                      active ? "bg-[#0037f0] text-white" : ""
+                    } group w-full items-center font-bold  rounded-md px-20 py-2`}
                   >
                     {link.name}
                   </Link>
@@ -61,7 +61,7 @@ const Nav = () => {
 
           {user?.user?.email === "fopefaokunla@gmail.com" ? (
             <div
-              style={{ color: mode === "dark" ? "white" : "" }}
+              style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
               className="px-1 py-4 w-[100%] capitalize "
             >
               <Menu.Item>
@@ -69,8 +69,8 @@ const Nav = () => {
                   <Link
                     to={"/dashboard"}
                     className={`${
-                      active ? "bg-[#785c00] text-white" : ""
-                    } group w-full items-center font-bold  rounded-md px-16 py-2`}
+                      active ? "bg-[#0037f0] text-white" : ""
+                    } group w-full items-center font-bold  rounded-md px-20 py-2`}
                   >
                     Admin
                   </Link>

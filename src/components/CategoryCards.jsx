@@ -29,8 +29,8 @@ const CategoryCards = () => {
   return (
     <div className="px-4 md:px-10 lg:px-16 py-8">
       <h2
-        style={{ color: mode === "dark" ? "#fbedbf" : "" }}
-        className="text-[1.2rem] md:text-[1.6rem] text-[#1e1700] font-bold"
+        style={{ color: mode === "dark" ? "#dfe6fd" : "" }}
+        className="text-[1.2rem] md:text-[1.6rem] text-[#000e3c] font-bold"
       >
         Category
       </h2>
@@ -40,7 +40,7 @@ const CategoryCards = () => {
           return (
             <motion.button
               style={{ backgroundColor: mode === "dark" ? "#aeb1b5" : "" }}
-              className="keen-slider__slide number-slide group-first: hover:ring-4 text-[1e1700] ring-[#919397] transition-all bg-[#cbcfd4] rounded h-[100px] flex flex-col items-center justify-center gap-2 md:gap-4"
+              className="keen-slider__slide number-slide group hover:shadow-lg text-[1e1700] shadow-[#4069f4] transition-all bg-[#cbcfd4] rounded h-[100px] flex flex-col items-center justify-center gap-2 md:gap-4"
             >
               <p className="text-[1.8rem] group-hover:text-[#2a00c7] md:text-[2.5rem] ">
                 {" "}

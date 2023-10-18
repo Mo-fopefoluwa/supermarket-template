@@ -50,7 +50,7 @@ const Navbar = () => {
           {({ open }) => (
             <>
               <Menu.Button
-                style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+                color={mode === "dark" ? "#bfcdfb" : "#000e3c"}
                 className="w-full"
               >
                 {open ? <IoCloseSharp size={30} /> : <HiMenuAlt1 size={30} />}
@@ -62,23 +62,29 @@ const Navbar = () => {
         <LightSwitch />
       </span>
       <p className="flex flex-row items-center pointer-events-none">
-        <FaOpencart color="#0037f0" size={30} />{" "}
-        <span className="text-[#f0b900]/80 font-semibold text-[1rem]">
+        <FaOpencart
+          style={{ color: mode === "dark" ? "#4069f4" : "#0037f0" }}
+          size={35}
+        />{" "}
+        <span
+          style={{ color: mode === "dark" ? "#f25920" : "" }}
+          className="text-[#f04100] font-semibold text-[1.2rem]"
+        >
           market
         </span>
       </p>
 
       {/*desktop & larger screens  */}
       <div
-        style={{ color: mode === "dark" ? "#f2c220" : "" }}
+        style={{ color: mode === "dark" ? "#4069f4" : "" }}
         className="md:flex flex-row gap-16 hidden"
       >
         <nav className="flex flex-row gap-4 md:gap-8 capitalize">
           {navs.map((nav) => {
             return (
               <Link
-                style={{ color: mode === "dark" ? "#f0b900" : "" }}
-                className="text-[.8rem] lg:text-base font-semibold text-[#967400] hover:text-[#d2a200] hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
+                style={{ color: mode === "dark" ? "#4069f4" : "" }}
+                className="text-[.8rem] lg:text-[1.2rem] font-semibold text-[#0037f0] hover:text-[#0037f0]/80 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
                 to={nav.link}
               >
                 {nav.name}
@@ -88,8 +94,8 @@ const Navbar = () => {
 
           {user?.user?.email === "fopefaokunla@gmail.com" ? (
             <Link
-              style={{ color: mode === "dark" ? "#f0b900" : "" }}
-              className="text-[.8rem] md:text-base font-semibold text-[#967400] hover:text-[#d2a200] hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
+              style={{ color: mode === "dark" ? "#4069f4" : "" }}
+              className="text-[.8rem] lg:text-[1.2rem] font-semibold text-[#0037f0] hover:text-[#0037f0]/80 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
               to={"/dashboard"}
             >
               Admin
@@ -100,7 +106,7 @@ const Navbar = () => {
         </nav>
       </div>
       {/* mobile screens */}
-      <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
+      <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
         <span className="hidden md:block">
           {" "}
           <LightSwitch />{" "}
@@ -114,7 +120,7 @@ const Navbar = () => {
           </span>
           <BiCart
             className="hover:scale-110 cursor-pointer"
-            color={mode === "dark" ? "#fbedbf" : "#3c2e00"}
+            color={mode === "dark" ? "#bfcdfb" : "#000e3c"}
             size={28}
           />
         </Link>
@@ -122,13 +128,12 @@ const Navbar = () => {
           {({ open }) => (
             <>
               <Menu.Button
-                style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+                color={mode === "dark" ? "#bfcdfb" : "#000e3c"}
                 className=" w-full"
               >
                 <VscAccount
-                  style={{ color: mode === "dark" ? "#fbedbf" : "" }}
+                  color={mode === "dark" ? "#bfcdfb" : "#000e3c"}
                   size={25}
-                  color="#3c2e00"
                   className="hover:scale-110 cursor-pointer"
                 />
               </Menu.Button>

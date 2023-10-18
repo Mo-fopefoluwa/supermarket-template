@@ -44,13 +44,13 @@ const PopularProducts = () => {
     <div className="px-[1.5rem] md:px-[2rem] lg:px-[4rem] xl:px-[6rem] py-[6rem]">
       <div className="flex flex-row justify-between items-center">
         <h2
-          style={{ color: mode === "dark" ? "#fbedbf" : "" }}
-          className="font-bold text-[#1e1700] text-[1.2rem] md:text-[1.6rem]"
+          style={{ color: mode === "dark" ? "#dfe6fd" : "" }}
+          className="text-[1.2rem] md:text-[1.6rem] text-[#000e3c] font-bold"
         >
           Popular Products
         </h2>
         <Link
-          style={{ backgroundColor: mode === "dark" ? "#f0b900" : "" }}
+          style={{ backgroundColor: mode === "dark" ? "#4069f4" : "" }}
           to={"/category"}
           className="bg-[#0037f0] text-[#e8ecf2] flex justify-center text-[.8rem] md:text-base font-bold rounded-full w-[25%] md:w-[10%] py-1 md:py-2"
         >
@@ -68,23 +68,30 @@ const PopularProducts = () => {
               <div
                 key={index}
                 style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                className="bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
+                className="group bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm  pb-4 md:pb-6"
               >
                 {" "}
-                <motion.span
-                  whileTap={{ scale: 0.75 }}
-                  onClick={() =>
-                    (window.location.href = `/productinfo/${products.id}`)
-                  }
-                  className=" w-full h-[200px]"
-                >
+                <motion.span className=" w-full h-[200px]">
                   <img
                     className="w-full relative h-[200px] rounded-md object-fit hover:scale-105 transition-all ease-in-out duration-100"
                     src={imageUrl}
                     alt=""
                   />
+                  <motion.button
+                    whileTap={{ scale: 0.75 }}
+                    //onClick={addCart(products.id)}
+                    className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px] pt-4"
+                  >
+                    <BiLock color="#e8ecf2" size={26} />{" "}
+                  </motion.button>
                 </motion.span>
-                <div className="absolute translate-y-[400px]  w-[100%] h=[100%] hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
+                <div
+                  whileTap={{ scale: 0.75 }}
+                  onClick={() =>
+                    (window.location.href = `/productinfo/${products.id}`)
+                  }
+                  className="absolute translate-y-[400px]  w-[100%] h=[100%] group-hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0"
+                >
                   <span className=" pt-4 flex flex-col gap-4">
                     <p className="font-semibold text-base md:text-[1.2rem]">
                       {title}
@@ -103,13 +110,6 @@ const PopularProducts = () => {
                     >
                       N {price}
                     </p>
-                    <motion.button
-                      whileTap={{ scale: 0.75 }}
-                      //onClick={addCart(products.id)}
-                      className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px]"
-                    >
-                      <BiLock color="#e8ecf2" size={26} />{" "}
-                    </motion.button>
                   </span>
                 </div>
               </div>

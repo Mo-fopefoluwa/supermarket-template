@@ -92,14 +92,14 @@ const Signup = () => {
               <button
                 onClick={signup}
                 type="submit"
-                className="bg-[#f0b900] h-[35px] w-[60px] flex justify-center items-center rounded-md"
+                className="bg-[#2050f2] h-[35px] w-[60px] flex justify-center items-center rounded-md"
               >
                 <HiArrowRight color="#5a4500" size={20} />
               </button>
             </span>
             <p className="text-center text-[#1e1700] pt-6 font-semibold">
               Have an account?{" "}
-              <Link className="text-[#d2a200]" to={"/login"}>
+              <Link className="text-[#6082f6]" to={"/login"}>
                 Log in
               </Link>
             </p>

@@ -1,5 +1,6 @@
 import React, { useContext, Fragment, useState } from "react";
 import myContext from "../context/myContext";
+import { motion } from "framer-motion";
 import { Dialog, Transition } from "@headlessui/react";
 
 const UpdatePackage = () => {
@@ -18,7 +19,7 @@ const UpdatePackage = () => {
 
   return (
     <div>
-      <div className=" inset-0">
+      <motion.div whileTap={{ scale: 0.75 }} className=" inset-0">
         <button
           type="button"
           onClick={openModal}
@@ -26,7 +27,7 @@ const UpdatePackage = () => {
         >
           Update Package
         </button>
-      </div>
+      </motion.div>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -134,13 +135,14 @@ const UpdatePackage = () => {
                   </div>
 
                   <div className="mt-[4rem]">
-                    <button
+                    <motion.button
+                      whileTap={{ scale: 0.75 }}
                       type="button"
-                      className="inline-flex w-[100%] justify-center rounded-md border border-transparent bg-[#0037f0] px-4 py-[.6rem] text-sm font-medium text-white hover:bg-[#1f7c30] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#31e252] focus-visible:ring-offset-2"
+                      className="inline-flex w-[100%] justify-center rounded-md border border-transparent bg-[#0037f0] px-4 py-[.6rem] text-sm font-medium text-white hover:bg-[#0037f0]/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#31e252] focus-visible:ring-offset-2"
                       onClick={updatePackage}
                     >
                       Update!
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -30,7 +30,7 @@ const PopularBundle = () => {
   return (
     <div className="px-0 md:px-[3rem] lg:px-[6rem] xl:px-[8rem] py-[6rem]">
       <div
-        style={{ backgroundColor: mode === "dark" ? "#f6d360" : "" }}
+        style={{ backgroundColor: mode === "dark" ? "" : "" }}
         className="bg-[#f9e59f] py-8 px-2 md:px-6 md:rounded-[2rem]"
       >
         <h2
@@ -42,14 +42,14 @@ const PopularBundle = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="py-16 px-8 md:px-4 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
+          <div className="py-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8 md:gap-16">
             {packagee.map((item, index) => {
               const { title, price, category, imageUrl } = item;
               return (
                 <div
                   key={index}
                   style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-                  className="bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
+                  className="group bg-[#e8ecf2] overflow-hidden relative w-full h-full flex flex-col gap-2 rounded-md shadow-sm px-2 md:px-4 py-4 md:py-6"
                 >
                   {" "}
                   <motion.span
@@ -64,8 +64,15 @@ const PopularBundle = () => {
                       src={imageUrl}
                       alt=""
                     />
+                    <motion.button
+                      whileTap={{ scale: 0.75 }}
+                      //onClick={addCart(products.id)}
+                      className="bg-[#0037f0] h-[45px] flex justify-center items-center rounded-full w-[45px] pt-4"
+                    >
+                      <BiLock color="#e8ecf2" size={26} />{" "}
+                    </motion.button>
                   </motion.span>
-                  <div className="absolute translate-y-[400px]  w-[100%] h=[100%] hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
+                  <div className="absolute translate-y-[400px]  w-[100%] h-[100%] group-hover:translate-y-0 transition-all ease-in-out duration-200 bg-[#e8ecf2] pl-4 md:pl-8 bg-opacity-75 top-2 left-0">
                     <span className=" pt-4 flex flex-col gap-4">
                       <p className="font-semibold text-base md:text-[1.2rem]">
                         {title}

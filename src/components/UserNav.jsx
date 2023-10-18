@@ -12,8 +12,8 @@ const UserNav = () => {
 
   return (
     <div
-      style={{ backgroundColor: mode === "dark" ? "black" : "" }}
-      className="fixed top-14 right-4 w-56 text-right bg-white  z-10"
+      style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
+      className="fixed top-14 right-4 w-56 text-right  bg-[#e8ecf2]  z-10"
     >
       <Transition
         as={Fragment}
@@ -34,9 +34,9 @@ const UserNav = () => {
                 {({ active }) => (
                   <Link
                     to={"/order"}
-                    style={{ color: mode === "dark" ? "white" : "" }}
+                    style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
                     className={`${
-                      active ? "bg-[#40aa54] text-white" : "text-gray-900"
+                      active ? "bg-[#0037f0] text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md font-bold px-2 py-2 `}
                   >
                     Order
@@ -49,9 +49,9 @@ const UserNav = () => {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
                   className={`${
-                    active ? "bg-[#40aa54] text-white" : "text-gray-900"
+                    active ? "bg-[#0037f0] text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md font-bold px-2 py-2 `}
                 >
                   <AuthDetails />
@@ -62,15 +62,9 @@ const UserNav = () => {
           <div className="px-1 py-1  ">
             <Menu.Item>
               <button className=" group  w-full rounded-md px-2 py-2 hover:ring-2 ring-gray-400">
-                <Link
-                  style={{ color: "dark" ? "white" : "black" }}
-                  to={"/wishlist"}
-                >
+                <Link to={"/wishlist"}>
                   {" "}
-                  <BsSuitHeart
-                    color={mode === "dark" ? "white" : "black"}
-                    size={22}
-                  />
+                  <BsSuitHeart style={{ color: "red" }} size={22} />
                 </Link>
               </button>
             </Menu.Item>
