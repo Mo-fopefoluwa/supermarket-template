@@ -17,8 +17,8 @@ const Home = () => {
       <Hero />
       <section className="w-full my-6 px-4 md:px-8">
         <div className="w-full flex items-center justify-between">
-          <p className="text-lg md:text-2xl font-semibold capitalize text-[#22305f] relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-[#ff7518] to-[#c44e00] transition-all ease-in-out duration-100">
-            Our fresh & healthy fruits selection made just for you
+          <p className="text-base md:text-2xl font-semibold capitalize text-[#22305f] relative before:absolute before:rounded-lg before:content before:w-24 before:md:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-[#ff7518] to-[#c44e00] transition-all ease-in-out duration-100">
+            Fresh & healthy fruits selected just for you
           </p>
           <div className="hidden md:flex gap-3 items-center">
             <motion.div

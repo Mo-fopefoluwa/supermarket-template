@@ -8,15 +8,15 @@ const ProductContainer = () => {
   const [filter, setFilter] = useState("fruits");
   const [{ products }, dispatch] = useStateValue();
   return (
-    <section className="w-full my-6 px-4 md:px-8" id="product">
+    <section className="w-full my-6  " id="product">
       <div className="w-full flex flex-col items-center justify-center">
         <p
-          className="text-lg md:text-2xl font-semibold capitalize text-[#22305f] relative before:absolute 
+          className="text-base px-4  md:px-8 md:text-2xl font-semibold capitalize text-[#22305f] relative before:absolute 
         before:rounded-lg before:content before:w-16 before:h-1 before:-bottom-2 before:left-6 mr-auto before:bg-gradient-to-tr from-[#ff7518] to-[#c44e00] transition-all ease-in-out duration-100"
         >
           Our Popular Products
         </p>
-        <div className="w-full flex  items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none ">
+        <div className="w-full flex px-4 md:px-8 items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none ">
           <div className=" py-[2rem] flex flex-row gap-4 justify-center items-center flex-wrap px-4 md:px-6 ">
             {categories &&
               categories.map((category) => {
@@ -43,7 +43,7 @@ const ProductContainer = () => {
                       {icon}{" "}
                     </p>
                     <p
-                      className={`capitalize text-[#e2dfd2] text-sm font-bold group-hover:text-[#e2dfd2] text-[#1e1700] ${
+                      className={`capitalize text-sm font-bold group-hover:text-[#e2dfd2] text-[#1e1700] ${
                         filter === category.urlParamName
                           ? "text-[#1e1700]"
                           : "text-gray-800"
@@ -56,7 +56,7 @@ const ProductContainer = () => {
               })}
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full md:px-8">
           <RowContainer
             flag={false}
             data={products?.filter((n) => n.category === filter)}
