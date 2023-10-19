@@ -45,14 +45,11 @@ export const categories = [
 export const tags = [
   {
     id: 1,
-    name: "popular product",
+    name: "popular-product",
   },
+
   {
     id: 2,
-    name: "popular bundle",
-  },
-  {
-    id: 3,
     name: "bestseller",
   },
 ];

@@ -17,16 +17,8 @@ const navs = [
     link: "/",
   },
   {
-    name: "category",
-    link: "/category",
-  },
-  {
-    name: "our packages",
-    link: "/packages",
-  },
-  {
-    name: "our app",
-    link: "/ourapp",
+    name: "Shop",
+    link: "/ourproducts",
   },
 ];
 
@@ -49,7 +41,7 @@ const Navbar = () => {
             initial={{ translateX: -100 }}
             animate={{ translateX: 0 }}
             exit={{ translateX: -100, transitionDuration: 200 }}
-            className={` bg-[#faf9f6] z-30 px-10 py-4 absolute items-center flex flex-col gap-12 h-screen top-[6.5rem] left-0 w-[95%]`}
+            className={` bg-[#faf9f6] z-30 px-10 py-4 absolute items-center flex flex-col gap-18 h-screen top-[6.5rem] left-0 w-[95%]`}
           >
             {navs.map((nav) => {
               return (

@@ -17,6 +17,7 @@ import { useStateValue } from "./context/StateProvider";
 import { getAllProduct } from "./utils/firebaseFunctions";
 import { useEffect } from "react";
 import { actionType } from "./context/reducer";
+import ProductContainer from "./components/ProductContainer";
 //import { useDispatch } from "react-redux";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/addproduct" element={<NewItem />} />
+          <Route path="/ourproducts" element={<ProductContainer />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/cart" element={<Cart />} />
 
