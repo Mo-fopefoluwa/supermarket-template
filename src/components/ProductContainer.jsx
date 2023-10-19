@@ -16,7 +16,7 @@ const ProductContainer = () => {
         >
           Our Popular Products
         </p>
-        <div className="w-full flex px-4 md:px-8 items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none ">
+        <div className="w-full flex px-4 md:px-8 items-center justify-center lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none ">
           <div className=" py-[2rem] flex flex-row gap-4 justify-center items-center flex-wrap px-4 md:px-6 ">
             {categories &&
               categories.map((category) => {

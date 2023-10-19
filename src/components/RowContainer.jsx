@@ -21,7 +21,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
           return (
             <div
               key={item.id}
-              className="w-[180px] min-w-[180px] md:w-[275px] md:min-w-[275px] lg:w-[320px] lg:min-w-[320px] h-[220px] bg-[#e2dfd2]
+              className="w-[180px] min-w-[180px] md:w-[255px] md:min-w-[255px] lg:w-[320px] lg:min-w-[320px] h-[220px] bg-[#e2dfd2]
                rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col item-center justify-between"
             >
               <div className="w-full flex  items-center justify-between">
