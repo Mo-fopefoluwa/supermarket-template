@@ -2,35 +2,48 @@ import {
   GiFriedFish,
   GiTomato,
   GiMedicines,
-  GiOfficeChair,
-  GiLipstick,
-  GiPlantSeed,
   GiMilkCarton,
   GiBowlOfRice,
-  GiVacuumCleaner,
-  GiForkKnifeSpoon,
-  GiOpenedFoodCan,
   GiKiwiFruit,
 } from "react-icons/gi";
-import { BiSolidBabyCarriage } from "react-icons/bi";
 
-export const projectExperience = [
+export const categories = [
   {
-    name: "Website Design",
-    projects: 76,
-    icon: HiOutlineDesktopComputer,
-    bg: "#286F6C",
+    id: 1,
+    name: "Fruits",
+    icon: <GiKiwiFruit />,
+    urlParamName: "fruits",
   },
   {
-    name: "Mobile App Design",
-    projects: 63,
-    icon: CiMobile1,
-    bg: "#EEC048",
+    id: 2,
+    name: "Vegetables",
+    icon: <GiTomato />,
+    urlParamName: "vegies",
   },
   {
-    name: "Brand Identity",
-    projects: 47,
-    icon: MdWorkspacesOutline,
-    bg: "#F26440",
+    id: 3,
+    name: "food & oils",
+    icon: <GiBowlOfRice />,
+    urlParamName: "food-and-oils",
+  },
+
+  {
+    id: 4,
+    name: "meat & fish",
+    icon: <GiFriedFish />,
+    urlParamName: "meat-and-fish",
+  },
+  {
+    id: 5,
+    name: "medicine",
+    icon: <GiMedicines />,
+    urlParamName: "medicine",
+  },
+  ,
+  {
+    id: 6,
+    name: "milk & dairies",
+    icon: <GiMilkCarton />,
+    urlParamName: "milk",
   },
 ];

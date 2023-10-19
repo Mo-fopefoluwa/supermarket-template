@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MyContext from "./myContext";
 import {
   QuerySnapshot,
   Timestamp,
@@ -25,7 +24,6 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { create } from "../reduxx/productSlice";
 import {
   deleteObject,
   getDownloadURL,
@@ -45,6 +43,7 @@ import {
   GiVacuumCleaner,
 } from "react-icons/gi";
 import { BiSolidBabyCarriage } from "react-icons/bi";
+import { StateContext } from "./StateProvider";
 
 const MyState = (props) => {
   const [mode, setMode] = useState("light");
@@ -661,7 +660,7 @@ const MyState = (props) => {
   const [filterPrice, setFilterPrice] = useState("");
 
   return (
-    <MyContext.Provider
+    <StateContext.Provider
       value={{
         mode,
         setMode,
@@ -704,7 +703,7 @@ const MyState = (props) => {
       }}
     >
       {props.children}
-    </MyContext.Provider>
+    </StateContext.Provider>
   );
 };
 

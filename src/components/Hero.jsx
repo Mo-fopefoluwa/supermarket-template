@@ -1,25 +1,20 @@
 import React, { useContext } from "react";
 import myContext from "../context/myContext";
+import { StateContext, useStateValue } from "../context/StateProvider";
 
 const Hero = () => {
-  const context = useContext(myContext);
-  const { mode } = context;
+  const { mode } = useStateValue();
 
   return (
-    <div className="px-[2rem] md:px-[4rem]  py-[2rem] md:py-[4rem]">
-      <div
-        style={{ backgroundColor: mode === "dark" ? "" : "" }}
-        className="bg-[#bfcdfb] flex flex-row overflow-hidden justify-between items-center px-4 md:px-[4rem] rounded-md h-[300px] md:h-[450px]"
-      >
+    <div className="px-[1rem] md:px-[4rem]  py-[2rem] md:py-[4rem]">
+      <div className="bg-[#bfcdfb] flex flex-row overflow-hidden justify-between items-center px-4 md:px-[4rem] rounded-md h-[300px] md:h-[450px]">
         <div className="flex flex-col justify-center w-[60%] md:w-[50%]">
           <h1 className="text-[1.2rem] text-[#000e3c] md:text-[2rem] lg:text-[2.4rem] xl:text-[2.8rem] leading-[1.4rem] sm:leading-[2rem] md:leading-[2.4rem] lg:leading-[3rem] font-extrabold">
-            Order your <br /> Daily Groceries
+            Order your <br /> Daily Groceries with speed and <br />
+            <span className="text-[#ff6600]"> ease</span>
           </h1>
-          <p
-            style={{ color: mode === "dark" ? "#6082f6" : "" }}
-            className="text-[#809bf7]  py-4 md:py-8 font-bold text-[1.3rem] md:text-[1.6rem] lg:text-[1.8rem]"
-          >
-            #Free Delivery
+          <p className="text-[#1c5870]  py-4 md:py-8 font-bold text-[1.3rem] md:text-[1.6rem] lg:text-[1.8rem]">
+            #Stress Free
           </p>
           {/* <div className="md:flex hidden flex-row items-center">
             <input

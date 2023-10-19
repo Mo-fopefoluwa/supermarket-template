@@ -1,63 +1,17 @@
 import React, { useState, useEffect } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import Modal from "../component/modal/Modal";
 import { HiArrowLeft } from "react-icons/hi";
 import { useContext } from "react";
 import { motion } from "framer-motion";
-import myContext from "../context/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart } from "../reduxx/cartSlice";
-import { toast } from "react-toastify";
 import { BiMinus, BiPlus, BiTrash } from "react-icons/bi";
 import CheckoutModal from "../components/CheckoutModal";
-import {
-  deleteItemFromCart,
-  listCartItems,
-  updateCartQty,
-} from "../action/cartActions";
-import { Link } from "react-router-dom";
+import { StateContext } from "../context/StateProvider";
 
 const Cart = () => {
-  const context = useContext(myContext);
+  const context = useContext(StateContext);
   const { mode, product } = context;
-  const dispatch = useDispatch();
-  const cartItemsList = useSelector((state) => state.cartItemsList);
-  const { error, cartItems } = cartItemsList;
-
-  const [qty, setQty] = React.useState(Number(product.qtyInCart));
-  const handleCartQty = (product) => {
-    dispatch(updateCartQty(product, Number(qty)));
-  };
-
-  const handleCartDel = (cartItemId) => {
-    dispatch(deleteItemFromCart(cartItemId));
-  };
-  // React.useEffect(() => {
-  //   dispatch(listCartItems());
-  // }, [dispatch]);
-  // console.log(cartItems);
-  // const [totalAmount, setTotalAmount] = useState(0);
-  // useEffect(() => {
-  //   let temp = 0;
-  //   cartItems.forEach((cartItem) => {
-  //     temp = temp + parseInt(cartItem.price);
-  //   });
-  //   setTotalAmount(temp);
-  //   // console.log(temp)
-  // }, [cartItems]);
-
-  // const shipping = parseInt(100);
-  // const grandTotal = shipping + totalAmount;
-
-  // // add to cart
-  // const deleteCart = (item) => {
-  //   dispatch(deleteFromCart(item));
-  //   toast.success("delete cart");
-  // };
-
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(cartItems));
-  // }, [cartItems]);
 
   return (
     <div>
@@ -67,49 +21,41 @@ const Cart = () => {
       </Link>
       <div className=" flex justify-center pt-[4rem] items-center">
         <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
-          {cartItems.map((item) => {
-            return (
-              <>
-                <div className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8">
-                  <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
-                    <img className="h-full w-full" src={item.imageURL} alt="" />
-                  </div>
-                  <div className="flex flex-col gap-4 w-[60%]">
-                    <span>
-                      <p className="font-bold text-[1.1rem]"> {item.title}</p>
-                      <p className="text-sm font-semibold text-gray-600">
-                        N {item.price}
-                      </p>
-                    </span>
-                    <span className="flex flex-row justify-between">
-                      <span className="flex flex-row">
-                        <motion.button
-                          whileTap={{ scale: 0.75 }}
-                          className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
-                        >
-                          <BiMinus size={20} />
-                        </motion.button>
-                        <p className="px-3 font-bold">{qty} </p>
-                        <motion.button
-                          whileTap={{ scale: 0.75 }}
-                          className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
-                        >
-                          <BiPlus size={20} />
-                        </motion.button>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-8 items-end">
-                    <button onClick={() => handleCartDel(item.id)}>
-                      {" "}
-                      <BiTrash color="red" size={22} />
-                    </button>
-                    <p className="font-bold">N{item.price}</p>
-                  </div>
-                </div>
-              </>
-            );
-          })}
+          <div className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8">
+            <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
+              <img className="h-full w-full" src="image" alt="" />
+            </div>
+            <div className="flex flex-col gap-4 w-[60%]">
+              <span>
+                <p className="font-bold text-[1.1rem]"> apples</p>
+                <p className="text-sm font-semibold text-gray-600">N 4000</p>
+              </span>
+              <span className="flex flex-row justify-between">
+                <span className="flex flex-row">
+                  <motion.button
+                    whileTap={{ scale: 0.75 }}
+                    className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                  >
+                    <BiMinus size={20} />
+                  </motion.button>
+                  <p className="px-3 font-bold"> 3 </p>
+                  <motion.button
+                    whileTap={{ scale: 0.75 }}
+                    className="ring-2 ring-[#f0b900]  px-3 rounded-sm hover:bg-[#f4cb40] hover:text-[#1e1700] font-semibold transition-all hover:ring-[#f0b900]/80"
+                  >
+                    <BiPlus size={20} />
+                  </motion.button>
+                </span>
+              </span>
+            </div>
+            <div className="flex flex-col gap-8 items-end">
+              <button>
+                {" "}
+                <BiTrash color="red" size={22} />
+              </button>
+              <p className="font-bold">N 2000</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="mt-8  flex justify-center items-center  py-8">

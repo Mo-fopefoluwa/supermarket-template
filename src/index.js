@@ -2,17 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { store } from "./reduxx/store";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import { StateProvider } from "./context/StateProvider";
+import reducer from "./context/reducer";
+import { initialState } from "./context/initialState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Provider store={store}>
+  <StateProvider initialState={initialState} reducer={reducer}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>
+  </StateProvider>
   //  </React.StrictMode>
 );

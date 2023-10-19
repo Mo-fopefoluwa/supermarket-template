@@ -1,7 +1,5 @@
-import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import myContext from "../context/myContext";
 
 const navs = [
   { name: "home", link: "/" },
@@ -20,68 +18,29 @@ const navs = [
 ];
 
 const Nav = () => {
-  const context = useContext(myContext);
-  const { mode } = context;
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div
-      style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-      className="fixed bg-[#e8ecf2] top-20 z-10 left-0 w-[100%] h-[100vh] text-center"
-    >
-      <Transition
-        as={Fragment}
-        enter="transition ease-in duration-800 scale-0"
-        enterFrom="translate-x opacity-0 scale-40"
-        enterTo="translate-x opacity-100 scale-100"
-        leave="transition ease-out duration-800 scale-60"
-        leaveFrom="translate-x opacity-60 scale-30"
-        leaveTo="translate-x opacity-0 scale-0"
-      >
-        <Menu.Items className="flex flex-col gap-8 items-center justify-center">
-          {navs.map((link) => (
-            <div
-              style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
-              className="px-1 py-4 w-[100%] capitalize "
-            >
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to={link.link}
-                    className={`${
-                      active ? "bg-[#0037f0] text-white" : ""
-                    } group w-full items-center font-bold  rounded-md px-20 py-2`}
-                  >
-                    {link.name}
-                  </Link>
-                )}
-              </Menu.Item>
-            </div>
-          ))}
-
-          {user?.user?.email === "fopefaokunla@gmail.com" ? (
-            <div
-              style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
-              className="px-1 py-4 w-[100%] capitalize "
-            >
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to={"/dashboard"}
-                    className={`${
-                      active ? "bg-[#0037f0] text-white" : ""
-                    } group w-full items-center font-bold  rounded-md px-20 py-2`}
-                  >
-                    Admin
-                  </Link>
-                )}
-              </Menu.Item>
-            </div>
-          ) : (
-            ""
-          )}
-        </Menu.Items>
-      </Transition>
+    <div>
+      <div>
+        {navs.map((nav) => {
+          return (
+            <Link className="" to={nav.link}>
+              {nav.name}
+            </Link>
+          );
+        })}
+        {user?.user?.email === "fopefaokunla@gmail.com" ? (
+          <Link
+            // className="text-[.8rem] lg:text-[1.2rem] font-semibold text-[#0037f0] hover:text-[#0037f0]/80 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
+            to={"/dashboard"}
+          >
+            Admin
+          </Link>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

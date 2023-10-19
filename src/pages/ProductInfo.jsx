@@ -4,14 +4,14 @@ import { BiCartAdd, BiMinus, BiPlus } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { fireDB } from "../Firebase/Firebase";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../reduxx/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useStateValue } from "../context/StateProvider";
 
 const ProductInfo = () => {
-  const context = useContext(myContext);
-  const { mode, product } = context;
+ 
+  const { mode, product } = useStateValue();
   const params = useParams();
   const [products, setProducts] = useState("");
 
@@ -36,12 +36,6 @@ const ProductInfo = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   // console.log(cartItems)
-
-  // add to cart
-  const addCart = (products) => {
-    dispatch(addToCart(products));
-    toast.success("add to cart");
-  };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -115,11 +109,7 @@ const ProductInfo = () => {
           <p className="text-[#6a6a6a] text-base"> description </p>
         </div>
         <div className="flex flex-row gap-4 items-center justify-center pt-8">
-          <motion.button
-            onClick={addCart(products)}
-            whileTap={{ scale: 0.75 }}
-            className="w-[15%]"
-          >
+          <motion.button whileTap={{ scale: 0.75 }} className="w-[15%]">
             <BiCartAdd color="#785c00" size={30} />
           </motion.button>
           <motion.button

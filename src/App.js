@@ -1,101 +1,43 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/registration/Signup";
-import MyState from "./context/MyState";
+
 import { AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/registration/Login";
 import Nopage from "./pages/Nopage";
-import Category from "./pages/Category";
-import Wishlist from "./pages/Wishlist";
+
 import Cart from "./pages/Cart";
-import Packages from "./pages/Packages";
-import AddProducts from "./components/AddProducts";
-import UpdateProducts from "./components/UpdateProducts";
+
 import ProductInfo from "./pages/ProductInfo";
-import { CartContextProvider } from "./context/CartContext";
 import Dashboard from "./admin/Dashboard";
-import Order from "./pages/Order";
-import UpdatePackage from "./components/UpdatePackage";
-import AddPackages from "./components/AddPackages";
+import NewItem from "./pages/NewItem";
 
 function App() {
   return (
     <div className="App">
-      <MyState>
-        <CartContextProvider>
-          <AnimatePresence>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/category" element={<Category />} />
-              <Route
-                path="/wishlist"
-                element={
-                  <ProtectedRoute>
-                    <Wishlist />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/productinfo/:id" element={<ProductInfo />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/packages" element={<Packages />} />
-              <Route
-                path="/order"
-                element={
-                  <ProtectedRoute>
-                    <Order />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/addproduct"
-                element={
-                  <ProtectedRouteForAdmin>
-                    <AddProducts />
-                  </ProtectedRouteForAdmin>
-                }
-              />
-              <Route
-                path="/updateproduct"
-                element={
-                  <ProtectedRouteForAdmin>
-                    <UpdateProducts />
-                  </ProtectedRouteForAdmin>
-                }
-              />
-              <Route
-                path="/addpackage"
-                element={
-                  <ProtectedRouteForAdmin>
-                    <AddPackages />
-                  </ProtectedRouteForAdmin>
-                }
-              />
-              <Route
-                path="/updatepackage"
-                element={
-                  <ProtectedRouteForAdmin>
-                    <UpdatePackage />
-                  </ProtectedRouteForAdmin>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRouteForAdmin>
-                    <Dashboard />
-                  </ProtectedRouteForAdmin>
-                }
-              />
-              <Route path="/*" element={<Nopage />} />
-            </Routes>
-            <ToastContainer />
-          </AnimatePresence>
-        </CartContextProvider>
-      </MyState>
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/addproduct" element={<NewItem />} />
+          <Route path="/productinfo/:id" element={<ProductInfo />} />
+          <Route path="/cart" element={<Cart />} />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRouteForAdmin>
+                <Dashboard />
+              </ProtectedRouteForAdmin>
+            }
+          />
+          <Route path="/*" element={<Nopage />} />
+        </Routes>
+        <ToastContainer />
+      </AnimatePresence>
     </div>
   );
 }

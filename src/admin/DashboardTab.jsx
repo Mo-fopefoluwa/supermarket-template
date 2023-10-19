@@ -5,10 +5,6 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import AddProducts from "../components/AddProducts";
-import AddPackages from "../components/AddPackages";
-import UpdatePackage from "../components/UpdatePackage";
-import UpdateProducts from "../components/UpdateProducts";
 
 function DashboardTab() {
   const context = useContext(myContext);
@@ -117,9 +113,9 @@ function DashboardTab() {
                 >
                   Product Details
                 </h1>
-                <div className=" flex justify-end">
+                {/* <div className=" flex justify-end">
                   <AddProducts />
-                </div>
+                </div> */}
                 <div className="relative overflow-x-auto ">
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
                     <thead
@@ -225,9 +221,9 @@ function DashboardTab() {
                                       />
                                     </svg>
                                   </div>
-                                  <div>
+                                  {/* <div>
                                     <UpdateProducts />
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                             </td>
@@ -248,9 +244,9 @@ function DashboardTab() {
                 >
                   Package Details
                 </h1>
-                <div className=" flex justify-end">
+                {/* <div className=" flex justify-end">
                   <AddPackages />
-                </div>
+                </div> */}
                 <div className="relative overflow-x-auto ">
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
                     <thead
@@ -356,9 +352,9 @@ function DashboardTab() {
                                       />
                                     </svg>
                                   </div>
-                                  <div>
+                                  {/* <div>
                                     <UpdatePackage />
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                             </td>

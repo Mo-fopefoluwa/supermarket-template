@@ -4,40 +4,32 @@ import { Link } from "react-router-dom";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import AuthDetails from "./AuthDetails";
 import myContext from "../context/myContext";
+import { useStateValue } from "../context/StateProvider";
 
 const UserNav = () => {
-  const context = useContext(myContext);
-  const { mode } = context;
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div
-      style={{ backgroundColor: mode === "dark" ? "#1d1d1e" : "" }}
-      className="fixed top-14 right-4 w-56 text-right  bg-[#e8ecf2]  z-10"
-    >
+    <div className="fixed top-20 right-4 w-56 text-right  bg-[faf9f6]  z-10">
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
+        enterFrom="transform opacity-0 scale-45"
         enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
+        leave="transition ease-in duration-100"
         leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+        leaveTo="transform opacity-0 scale-45"
       >
-        <Menu.Items
-          style={{ backgroundColor: mode === "dark" ? "black" : "" }}
-          className=" right-4 w-56 ring-2 ring-gray-400 origin-top-right  rounded-md bg-white "
-        >
+        <Menu.Items className=" right-4 w-56 ring-2 ring-gray-400 origin-top-right  rounded-md bg-white ">
           <div className="px-1 py-1 ">
             {user ? (
               <Menu.Item>
                 {({ active }) => (
                   <Link
                     to={"/order"}
-                    style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
                     className={`${
-                      active ? "bg-[#0037f0] text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md font-bold px-2 py-2 `}
+                      active ? "bg-[#22305f] text-white" : "text-gray-900"
+                    } active:scale:75 group flex w-full items-center rounded-md font-bold px-2 py-2 `}
                   >
                     Order
                   </Link>
@@ -49,10 +41,9 @@ const UserNav = () => {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  style={{ color: mode === "dark" ? "#bfcdfb" : "" }}
                   className={`${
-                    active ? "bg-[#0037f0] text-white" : "text-gray-900"
-                  } group flex w-full items-center rounded-md font-bold px-2 py-2 `}
+                    active ? "bg-[#22305f] text-white" : "text-gray-900"
+                  } group flex w-full items-center active:scale-75 rounded-md font-bold px-2 py-2 `}
                 >
                   <AuthDetails />
                 </button>
@@ -61,7 +52,7 @@ const UserNav = () => {
           </div>
           <div className="px-1 py-1  ">
             <Menu.Item>
-              <button className=" group  w-full rounded-md px-2 py-2 hover:ring-2 ring-gray-400">
+              <button className=" group  w-full active:scale-75 rounded-md px-2 py-2 hover:ring-2 ring-gray-400">
                 <Link to={"/wishlist"}>
                   {" "}
                   <BsSuitHeart style={{ color: "red" }} size={22} />
