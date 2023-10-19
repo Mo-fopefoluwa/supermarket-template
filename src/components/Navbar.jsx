@@ -66,7 +66,7 @@ const Navbar = () => {
               <Link
                 onClick={() => setOpened(false)}
                 className=" w-[100%] hover:bg-[#22305f] active:scale-75 px-10 py-2 rounded-md font-medium capitalize hover:text-white text-center text-lg"
-                to={"/dashboard"}
+                to={"/addproduct"}
               >
                 Admin
               </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
           {user?.user?.email === "fopefaokunla@gmail.com" ? (
             <Link
               className="text-[.8rem] lg:text-[1.2rem] font-semibold text-[#0037f0] hover:text-[#0037f0]/80 hover:scale-110 transition-all ease-in-out duration-100 cursor-pointer "
-              to={"/dashboard"}
+              to={"/addproduct"}
             >
               Admin
             </Link>
