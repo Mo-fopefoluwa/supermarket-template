@@ -33,17 +33,26 @@ export const categories = [
     icon: <GiFriedFish />,
     urlParamName: "meat-and-fish",
   },
+
   {
     id: 5,
-    name: "medicine",
-    icon: <GiMedicines />,
-    urlParamName: "medicine",
-  },
-  ,
-  {
-    id: 6,
-    name: "milk & dairies",
+    name: "dairies",
     icon: <GiMilkCarton />,
     urlParamName: "milk",
+  },
+];
+
+export const tags = [
+  {
+    id: 1,
+    name: "popular product",
+  },
+  {
+    id: 2,
+    name: "popular bundle",
+  },
+  {
+    id: 3,
+    name: "bestseller",
   },
 ];

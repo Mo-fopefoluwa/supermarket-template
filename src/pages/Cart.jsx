@@ -10,9 +10,6 @@ import CheckoutModal from "../components/CheckoutModal";
 import { StateContext } from "../context/StateProvider";
 
 const Cart = () => {
-  const context = useContext(StateContext);
-  const { mode, product } = context;
-
   return (
     <div>
       <Link to={"/"} className=" relative pt-[4rem] w-[100%]">

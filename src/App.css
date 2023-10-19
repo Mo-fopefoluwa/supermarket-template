@@ -33,6 +33,16 @@
   color: #88888a;
 }
 
+.texted {
+  color: #22305f;
+  background-color: #abbbf1;
+}
+
+.tested {
+  color: #ff7518;
+  background-color: #c44e00;
+}
+
 .texter {
   color: #464545;
 }

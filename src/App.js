@@ -13,8 +13,29 @@ import Cart from "./pages/Cart";
 import ProductInfo from "./pages/ProductInfo";
 import Dashboard from "./admin/Dashboard";
 import NewItem from "./pages/NewItem";
+import { useStateValue } from "./context/StateProvider";
+import { getAllProduct } from "./utils/firebaseFunctions";
+import { useEffect } from "react";
+import { actionType } from "./context/reducer";
+//import { useDispatch } from "react-redux";
 
 function App() {
+  // const dispatch = useDispatch();
+
+  const [{ products }, dispatch] = useStateValue();
+
+  const fetchData = async () => {
+    await getAllProduct().then((data) => {
+      dispatch({
+        type: actionType.SET_PRODUCTS,
+        products: data,
+      });
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="App">
       <AnimatePresence mode="wait">

@@ -11,7 +11,7 @@ import {
   MdFoodBank,
   MdMoney,
 } from "react-icons/md";
-import { categories } from "../utils/data";
+import { categories, tags } from "../utils/data";
 import Loader from "../components/Loader";
 import {
   deleteObject,
@@ -20,7 +20,9 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../Firebase/Firebase";
-import { saveItem } from "../utils/firebaseFunctions";
+import { getAllProduct, saveItem } from "../utils/firebaseFunctions";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 const NewItem = () => {
   const [title, setTitle] = useState("");
@@ -29,10 +31,12 @@ const NewItem = () => {
   const [category, setCategory] = useState(null);
   const [description, setDescription] = useState("");
   const [fields, setFields] = useState(false);
+  const [tag, setTag] = useState("");
   const [msg, setMsg] = useState(null);
   const [alertStatus, setAlertStatus] = useState("danger");
   const [loading, setLoading] = useState(false);
   const [imageAsset, setImageAsset] = useState(null);
+  const [{ products }, dispatch] = useStateValue();
 
   const uploadImage = (e) => {
     setLoading(true);
@@ -75,9 +79,19 @@ const NewItem = () => {
     setTitle("");
     setImageAsset(null);
     setCategory("Select Category");
+    setTag("");
     setWeight("");
     setPrice("");
     setDescription("");
+  };
+
+  const fetchData = async () => {
+    await getAllProduct().then((data) => {
+      dispatch({
+        type: actionType.SET_PRODUCTS,
+        products: data,
+      });
+    });
   };
 
   const deleteImage = () => {
@@ -96,7 +110,14 @@ const NewItem = () => {
   const saveDetails = () => {
     setLoading(true);
     try {
-      if (!title || !price || !imageAsset) {
+      if (
+        !title ||
+        !category ||
+        !weight ||
+        !description ||
+        !price ||
+        !imageAsset
+      ) {
         setFields(true);
         setMsg("Required fields can't be empty");
         setAlertStatus("danger");
@@ -111,6 +132,7 @@ const NewItem = () => {
           imageURL: imageAsset,
           category: category,
           weight: weight,
+          tag: tag,
           price: price,
           description: description,
           qty: 1,
@@ -135,6 +157,7 @@ const NewItem = () => {
         setLoading(false);
       }, 5000);
     }
+    fetchData();
   };
   return (
     <Layout>
@@ -188,6 +211,29 @@ const NewItem = () => {
                 })}
             </select>
           </div>
+          <div className="w-full  py-2 border-b-2 border-gray-300 flex items-center gap-2">
+            <select
+              className="w-full h-full outline-none bg-transparent text-lg font-semibold"
+              onChange={(e) => setTag(e.target.value)}
+            >
+              <option className="text-xl text-gray-500 bg-white" value="other">
+                Select Tag
+              </option>
+              {tags &&
+                tags.map((tagss) => {
+                  return (
+                    <option
+                      key={tagss.id}
+                      className="bg-white text-base border-0 outline-none capitalize text-[#22305f]"
+                      value={tagss.name}
+                    >
+                      {" "}
+                      {tagss.name}{" "}
+                    </option>
+                  );
+                })}
+            </select>
+          </div>
           <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-[300px] md:h-[400px] cursor-pointer rounded-lg">
             {loading ? (
               <Loader />
@@ -196,10 +242,10 @@ const NewItem = () => {
                 {!imageAsset ? (
                   <>
                     <label
-                      className="w-full h-full flex flex-col items-center justify-center cursor-pointer"
+                      className="w-full relative h-full flex flex-col items-center justify-center cursor-pointer"
                       htmlFor=""
                     >
-                      <div className="group w-full h-full flex flex-col gap-2 items-center justify-center">
+                      <div className="group relative w-full h-full flex flex-col gap-2 items-center justify-center">
                         <MdCloudUpload className="text-gray-500 text-[3rem] group-hover:text-gray-700" />
                         <p className="text-gray-500 text-base group-hover:text-gray-700">
                           Click here to upload
@@ -210,7 +256,7 @@ const NewItem = () => {
                         name="uploadimage"
                         accept="image/*"
                         onChange={uploadImage}
-                        className="w-full h-full"
+                        className="w-[100%] absolute top-0 left-0 h-[100%]"
                       />
                     </label>
                   </>
@@ -244,8 +290,8 @@ const NewItem = () => {
                 className="w-full h-full text-[#22305f] text-lg bg-transparent outline-none border-none placeholder:text-gray-400"
                 type="text"
                 required
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
                 placeholder="Weight"
               />
             </div>
