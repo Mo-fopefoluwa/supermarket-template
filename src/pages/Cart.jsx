@@ -47,16 +47,16 @@ const Cart = () => {
           <div className=" flex justify-center pt-[4rem] items-center">
             <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
               {cartItems &&
-                cartItems.map((items) => {
+                cartItems.map((item) => {
                   return (
                     <div
-                      key={items.id}
+                      key={item?.id}
                       className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8"
                     >
                       <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
                         <img
                           className="h-full w-full"
-                          src={items?.imageURL}
+                          src={item?.imageURL}
                           alt=""
                         />
                       </div>
@@ -64,10 +64,10 @@ const Cart = () => {
                         <span>
                           <p className="font-bold text-[1.1rem]">
                             {" "}
-                            {items?.title}
+                            {item?.title}
                           </p>
                           <p className="text-sm font-semibold text-gray-600">
-                            N {items?.price}
+                            N {item?.price}
                           </p>
                         </span>
                         <span className="flex flex-row justify-between">
@@ -78,7 +78,7 @@ const Cart = () => {
                             >
                               <BiMinus size={20} />
                             </motion.button>
-                            <p className="px-3 font-bold"> {items?.qty} </p>
+                            <p className="px-3 font-bold"> {item?.qty} </p>
                             <motion.button
                               whileTap={{ scale: 0.75 }}
                               className="ring-2 ring-[#22305f]  px-3 rounded-sm hover:bg-[#3b68fd] hover:text-white font-semibold  hover:ring-[#22305f]/80"

@@ -13,7 +13,6 @@ const RowContainer = ({ flag, data, scrollValue }) => {
   }, [scrollValue]);
 
   const addtoCart = (item) => {
-    setItems([...cartItems, item]);
     dispatch({
       type: actionType.SET_CARTITEMS,
       cartItems: items,
