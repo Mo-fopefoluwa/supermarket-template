@@ -184,7 +184,7 @@ const NewItem = () => {
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Give me a title"
+              placeholder="Add a title"
               className="w-full h-full outline-none text-[#22305f] placeholder:text-gray-500 bg-transparent text-lg font-semibold"
             />
           </div>
@@ -256,7 +256,7 @@ const NewItem = () => {
                         name="uploadimage"
                         accept="image/*"
                         onChange={uploadImage}
-                        className="w-[100%] absolute top-0 left-0 h-[100%]"
+                        className="w-[100%] absolute invisible top-0 left-0 h-[100%]"
                       />
                     </label>
                   </>

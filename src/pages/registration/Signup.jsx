@@ -1,22 +1,75 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import myContext from "../../context/myContext";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
+import { toast } from "react-toastify";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { fireDB } from "../../Firebase/Firebase";
 
 const Signup = () => {
-  const context = useContext(myContext);
-  const {
-    signup,
-    togglePassword,
-    name,
-    setName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    passwordType,
-  } = context;
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordType, setPasswordType] = useState("");
+
+  const signup = async (e) => {
+    e.preventDefault();
+    //setLoading(true);
+    if (name === "") {
+      toast.error("Name is required");
+    } else if (email === "") {
+      toast.error("Email is required");
+    } else if (password === "") {
+      toast.error("Password is required");
+    }
+    try {
+      const auth = getAuth();
+      const users = await createUserWithEmailAndPassword(auth, email, password);
+      //console.log(users);
+
+      const user = {
+        name: name,
+        uid: users.user.uid,
+        email: users.user.email,
+        time: Timestamp.now(),
+      };
+      const userRef = collection(fireDB, "users");
+      await addDoc(userRef, user);
+      setName("");
+      setEmail("");
+      setPassword("");
+      toast.success("You're now a proud member of GMarket");
+      window.location.href = "/login";
+      //setLoading(false);
+    } catch (error) {
+      toast.error("sign up failed" + error);
+      //setLoading(false);
+    }
+  };
+
+  const togglePassword = (e) => {
+    e.preventDefault();
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
+  const provider = new GoogleAuthProvider();
+
+  const googleLogin = async () => {
+    const auth = getAuth();
+    const response = await signInWithPopup(auth, provider);
+    console.log(response);
+  };
 
   return (
     <div className="bg-[#e8ecf2] h-[110vh]">
@@ -36,7 +89,7 @@ const Signup = () => {
                   Your Name
                 </label>
                 <input
-                  className="w-full border-2 focus:ring-[#f0b900] border-[#57585b]  ring-[#785c00] relative ring-2  rounded-md focus:outline-none px-4 py-3"
+                  className="w-full border-2 focus:ring-[#2b88f3] border-[#57585b]  ring-[#2050f2] relative ring-2  rounded-md focus:outline-none px-4 py-3"
                   id="name"
                   type="name"
                   value={name}
@@ -51,7 +104,7 @@ const Signup = () => {
                   Email Address
                 </label>
                 <input
-                  className="w-full border-2 focus:ring-[#f0b900] border-[#57585b]  ring-[#785c00] relative ring-2  rounded-md focus:outline-none px-4 py-3"
+                  className="w-full border-2 focus:ring-[#2b88f3] border-[#57585b]  ring-[#2050f2] relative ring-2  rounded-md focus:outline-none px-4 py-3"
                   id="email"
                   type="email"
                   value={email}
@@ -68,7 +121,7 @@ const Signup = () => {
 
                 <span className="relative">
                   <input
-                    className="w-full border-2 focus:ring-[#f0b900] border-[#57585b]  ring-[#785c00] relative ring-2  rounded-md focus:outline-none px-4 py-3"
+                    className="w-full border-2 focus:ring-[#2b88f3] border-[#57585b]  ring-[#2050f2] relative ring-2  rounded-md focus:outline-none px-4 py-3"
                     id="password"
                     type={passwordType}
                     value={password}
@@ -92,11 +145,19 @@ const Signup = () => {
               <button
                 onClick={signup}
                 type="submit"
-                className="bg-[#2050f2] h-[35px] w-[60px] flex justify-center items-center rounded-md"
+                className="bg-[#2050f2] hover:ring-[#2b88f3] h-[35px] w-[60px] flex text-white drop-shadow-md justify-center items-center rounded-md"
               >
-                <HiArrowRight color="#5a4500" size={20} />
+                <HiArrowRight size={20} />
               </button>
             </span>
+            <div
+              onClick={googleLogin}
+              className=" flex justify-center items-center "
+            >
+              <p className="bg-white inset-22 rounded-md text-lg font-medium drop-shadow-md px-4 py-2">
+                signup with Google
+              </p>
+            </div>
             <p className="text-center text-[#1e1700] pt-6 font-semibold">
               Have an account?{" "}
               <Link className="text-[#6082f6]" to={"/login"}>

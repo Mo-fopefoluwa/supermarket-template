@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 //import Modal from "../component/modal/Modal";
-import { HiArrowLeft } from "react-icons/hi";
+import { HiArrowLeft, HiArrowNarrowLeft } from "react-icons/hi";
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,14 +11,34 @@ import { useStateValue } from "../context/StateProvider";
 import { BsFillBackspaceFill } from "react-icons/bs";
 import { VscRefresh } from "react-icons/vsc";
 import { actionType } from "../context/reducer";
+import { fadeIn } from "../utils/motion";
+import CartItems from "../components/CartItems";
 
 const Cart = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [tot, setTot] = useState("");
+  const [flag, setFlag] = useState(false);
   const [{ cartShow, cartItems }, dispatch] = useStateValue();
-  const showCart = () => {
+  // const showCart = () => {
+  //   dispatch({
+  //     type: actionType.SET_CART_SHOW,
+  //     cartShow: !cartShow,
+  //   });
+  // };
+
+  useEffect(() => {
+    let totalPrice = cartItems.reduce(function (accumulator, item) {
+      return accumulator + item.qty * item.price;
+    }, 0);
+    setTot(totalPrice);
+  }, [tot, flag]);
+
+  const clearCart = () => {
     dispatch({
-      type: actionType.SET_CART_SHOW,
-      cartShow: !cartShow,
+      type: actionType.SET_CARTITEMS,
+      cartItems: [],
     });
+    localStorage.setItem("cartItems", JSON.stringify([]));
   };
   return (
     <motion.div
@@ -27,18 +47,19 @@ const Cart = () => {
       exit={{ opacity: 0, x: 200 }}
     >
       <div className="flex justify-between items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
-        <Link onClick={showCart} className="  ">
+        <Link to={"/"} className="  ">
           <motion.div whileTap={{ scale: 0.75 }} className="">
-            <BsFillBackspaceFill size={25} />
+            <HiArrowNarrowLeft size={28} />
           </motion.div>
         </Link>
         <h2 className="font-bold text-[1.4rem] text-center ">Cart</h2>
 
         <motion.div
+          onClick={clearCart}
           whileTap={{ scale: 0.75 }}
-          className="flex items-center text-base font-semibold"
+          className="flex items-center text-base font-semibold text-red-500"
         >
-          Clear <VscRefresh size={28} />
+          Clear <VscRefresh size={22} />
         </motion.div>
       </div>
 
@@ -48,55 +69,7 @@ const Cart = () => {
             <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
               {cartItems &&
                 cartItems.map((item) => {
-                  return (
-                    <div
-                      key={item?.id}
-                      className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8"
-                    >
-                      <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
-                        <img
-                          className="h-full w-full"
-                          src={item?.imageURL}
-                          alt=""
-                        />
-                      </div>
-                      <div className="flex flex-col gap-4 w-[60%]">
-                        <span>
-                          <p className="font-bold text-[1.1rem]">
-                            {" "}
-                            {item?.title}
-                          </p>
-                          <p className="text-sm font-semibold text-gray-600">
-                            N {item?.price}
-                          </p>
-                        </span>
-                        <span className="flex flex-row justify-between">
-                          <span className="flex flex-row">
-                            <motion.button
-                              whileTap={{ scale: 0.75 }}
-                              className="ring-2 ring-[#22305f]  px-3 rounded-sm hover:bg-[#3b68fd] hover:text-white font-semibold  hover:ring-[#22305f]/80"
-                            >
-                              <BiMinus size={20} />
-                            </motion.button>
-                            <p className="px-3 font-bold"> {item?.qty} </p>
-                            <motion.button
-                              whileTap={{ scale: 0.75 }}
-                              className="ring-2 ring-[#22305f]  px-3 rounded-sm hover:bg-[#3b68fd] hover:text-white font-semibold  hover:ring-[#22305f]/80"
-                            >
-                              <BiPlus size={20} />
-                            </motion.button>
-                          </span>
-                        </span>
-                      </div>
-                      <div className="flex flex-col gap-8 items-end">
-                        <motion.button whileTap={{ scale: 0.75 }}>
-                          {" "}
-                          <BiTrash className="text-red-600" size={22} />
-                        </motion.button>
-                        <p className="font-bold ">N2000</p>
-                      </div>
-                    </div>
-                  );
+                  return <CartItems key={item?.id} item={item} />;
                 })}
             </div>
           </div>
@@ -105,28 +78,43 @@ const Cart = () => {
               <dl className="space-y-0.5 ">
                 <div className="flex justify-between pb-4">
                   <dt className="font-bold text-gray-600">Subtotal</dt>
-                  <dd className="font-bold">N 200</dd>
+                  <dd className="font-bold">N {tot}</dd>
                 </div>
 
                 <div className="flex justify-between pb-4">
                   <dt className="font-bold text-gray-600">Shipping</dt>
-                  <dd className="font-bold">N200</dd>
+                  <dd className="font-bold">N2500</dd>
                 </div>
 
                 <div className="flex border-t-2 border-dashed border-t-gray-600 pt-2 pb-4 justify-between !text-base font-medium">
                   <dt className="font-bold text-gray-600">Total</dt>
-                  <dd className="font-bold">N200</dd>
+                  <dd className="font-bold">{tot + 2500}</dd>
                 </div>
               </dl>
 
-              <div className="flex justify-center md:justify-end  pt-4">
-                <CheckoutModal />
-              </div>
+              {user ? (
+                <div className="flex justify-center md:justify-end  pt-4">
+                  <CheckoutModal />
+                </div>
+              ) : (
+                <Link
+                  to={"/login"}
+                  className="flex justify-center md:justify-end  pt-4"
+                >
+                  Login to checkout
+                </Link>
+              )}
             </div>
           </div>
         </>
       ) : (
-        <> You have no item in your cart </>
+        <motion.p
+          variants={fadeIn("up", "tween", 0.2, 1)}
+          className="text-center w-screen h-screen flex justify-center items-center text-lg sm:text-xl font-semibold text-[#22305f] drop-shadow-lg"
+        >
+          {" "}
+          You have no item in your cart{" "}
+        </motion.p>
       )}
     </motion.div>
   );

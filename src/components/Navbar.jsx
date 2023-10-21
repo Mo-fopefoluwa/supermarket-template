@@ -52,7 +52,7 @@ const Navbar = () => {
             initial={{ translateX: -100 }}
             animate={{ translateX: 0 }}
             exit={{ translateX: -100, transitionDuration: 200 }}
-            className={` bg-[#faf9f6] z-30 px-10 py-4 absolute items-center flex flex-col gap-[6rem] h-screen top-[6.5rem] left-0 w-[85%] after:absolute after:w-[24%] after:-right-[5.2rem] after:h-screen after:content after:z-10 after:backdrop-blur-sm`}
+            className={` bg-[#faf9f6] z-30 px-10 py-4 absolute items-center flex flex-col gap-[6rem] h-screen top-[6.5rem] left-0 w-[85%] after:absolute after:w-[24%] after:sm:w-[15%] after:md:w-[12%] after:-right-[5.2rem] after:h-screen after:content after:z-10 after:backdrop-blur-sm`}
           >
             {navs.map((nav) => {
               return (

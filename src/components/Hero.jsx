@@ -5,7 +5,7 @@ import { StateContext, useStateValue } from "../context/StateProvider";
 const Hero = () => {
   return (
     <div className="px-0 md:px-[2rem]  py-[2rem] md:py-[4rem]">
-      <div className="bg-[#bfcdfb] flex flex-row overflow-hidden justify-between items-center px-4 md:px-[4rem] rounded-md h-[300px] md:h-[450px]">
+      <div className="bg-[#bfcdfb] flex flex-row overflow-hidden justify-between items-center px-4 md:px-[4rem] md:rounded-md h-[300px] md:h-[450px]">
         <div className="flex flex-col justify-center w-[60%] md:w-[50%]">
           <h1 className="text-[1.2rem] text-[#000e3c] md:text-[2rem] lg:text-[2.4rem] xl:text-[2.8rem] leading-[1.4rem] sm:leading-[2rem] md:leading-[2.4rem] lg:leading-[3rem] font-extrabold">
             Order your <br /> Daily Groceries with speed and <br />
