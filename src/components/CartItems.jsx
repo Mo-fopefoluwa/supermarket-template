@@ -51,14 +51,14 @@ const CartItems = ({ item, setFlag, flag }) => {
   return (
     <div>
       <div className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8">
-        <div className="w-[28%] sm:w-[24%] md:w-[20%] px-4 py-4">
+        <div className="w-[%] sm:w-[15%] md:w-[15%] lg:w-[20%] px-4 py-4">
           <img className="h-full w-full" src={item?.imageURL} alt="" />
         </div>
         <div className="flex flex-col gap-4 w-[60%]">
           <span>
             <p className="font-bold text-[1.1rem]"> {item?.title}</p>
             <p className="text-sm font-semibold text-gray-600">
-              N {parseFloat(item?.price) * qty}
+              N {item?.price}
             </p>
           </span>
           <span className="flex flex-row justify-between">
@@ -87,7 +87,7 @@ const CartItems = ({ item, setFlag, flag }) => {
             {" "}
             <BiTrash className="text-red-600" size={22} />
           </motion.button>
-          <p className="font-bold ">N2000</p>
+          <p className="font-bold ">N{parseFloat(item?.price) * qty}</p>
         </div>
       </div>
     </div>
