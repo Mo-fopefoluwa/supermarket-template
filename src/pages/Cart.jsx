@@ -16,15 +16,15 @@ import CartItems from "../components/CartItems";
 
 const Cart = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const [tot, setTot] = useState("");
-  const [flag, setFlag] = useState(false);
+  const [tot, setTot] = useState(0);
+  const [flag, setFlag] = useState(1);
   const [{ cartShow, cartItems }, dispatch] = useStateValue();
-  // const showCart = () => {
-  //   dispatch({
-  //     type: actionType.SET_CART_SHOW,
-  //     cartShow: !cartShow,
-  //   });
-  // };
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
+    });
+  };
 
   useEffect(() => {
     let totalPrice = cartItems.reduce(function (accumulator, item) {
@@ -45,19 +45,23 @@ const Cart = () => {
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
+      className="w-80% md:w-[40%] z-[101] drop-shadow-md h-screen fixed top-[6rem] right-0"
     >
-      <div className="flex justify-between items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
-        <Link to={"/"} className="  ">
-          <motion.div whileTap={{ scale: 0.75 }} className="">
-            <HiArrowNarrowLeft size={28} />
-          </motion.div>
-        </Link>
+      <div className="flex justify-between  items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
+        <motion.div
+          onClick={showCart}
+          whileTap={{ scale: 0.7 }}
+          className="cursor-pointer"
+        >
+          <HiArrowNarrowLeft size={28} />
+        </motion.div>
+
         <h2 className="font-bold text-[1.4rem] text-center ">Cart</h2>
 
         <motion.div
           onClick={clearCart}
-          whileTap={{ scale: 0.75 }}
-          className="flex items-center text-base font-semibold text-red-500"
+          whileTap={{ scale: 0.7 }}
+          className="flex items-center text-base cursor-pointer font-semibold text-red-500"
         >
           Clear <VscRefresh size={22} />
         </motion.div>
@@ -69,7 +73,14 @@ const Cart = () => {
             <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
               {cartItems &&
                 cartItems.map((item) => {
-                  return <CartItems key={item?.id} item={item} />;
+                  return (
+                    <CartItems
+                      setFlag={setFlag}
+                      flag={flag}
+                      key={item?.id}
+                      item={item}
+                    />
+                  );
                 })}
             </div>
           </div>

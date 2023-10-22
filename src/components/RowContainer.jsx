@@ -84,7 +84,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
           exit={{ x: -200, opacity: 0.5, scale: 0.75 }}
           className="flex items-center my-12 justify-center w-screen  font-bold text-lg md:text-xl text-[#22305f] drop-shadow-sm"
         >
-          Please be patient with us while loading ...
+          Products not available
         </motion.div>
       )}
     </div>

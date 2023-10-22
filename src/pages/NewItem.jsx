@@ -23,6 +23,7 @@ import { storage } from "../Firebase/Firebase";
 import { getAllProduct, saveItem } from "../utils/firebaseFunctions";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+import { Timestamp } from "firebase/firestore";
 
 const NewItem = () => {
   const [title, setTitle] = useState("");
@@ -136,6 +137,12 @@ const NewItem = () => {
           price: price,
           description: description,
           qty: 1,
+          time: Timestamp.now(),
+          date: new Date().toLocaleString("en-Us", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          }),
         };
         saveItem(data);
         setLoading(false);

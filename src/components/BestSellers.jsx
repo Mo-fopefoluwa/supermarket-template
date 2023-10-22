@@ -61,9 +61,14 @@ const BestSellers = ({ flag, data, scrollValuee }) => {
           );
         })
       ) : (
-        <div className="flex items-center justify-center w-screen">
+        <motion.div
+          initial={{ x: -200, opacity: 0.5, scale: 0.75 }}
+          animate={{ x: 0, opacity: 1, scale: 1 }}
+          exit={{ x: -200, opacity: 0.5, scale: 0.75 }}
+          className="flex items-center my-12 justify-center w-screen  font-bold text-lg md:text-xl text-[#22305f] drop-shadow-sm"
+        >
           Products not available
-        </div>
+        </motion.div>
       )}
     </div>
   );

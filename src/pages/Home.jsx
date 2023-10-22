@@ -9,14 +9,15 @@ import { useStateValue } from "../context/StateProvider";
 
 import BestSellers from "../components/BestSellers";
 import PopularProducts from "../components/PopularProducts";
+import Cart from "./Cart";
 
 const Home = () => {
-  const [{ products }, dispatch] = useStateValue();
+  const [{ products, cartShow }, dispatch] = useStateValue();
   const [scrollValue, setScrollValue] = useState(0);
   const [scrollValuee, setScrollValuee] = useState(0);
   const [scrollValuer, setScrollValuer] = useState(0);
 
-  useEffect(() => {}, [scrollValue]);
+  useEffect(() => {}, [scrollValue, cartShow]);
   useEffect(() => {}, [scrollValuee]);
   useEffect(() => {}, [scrollValuer]);
 
@@ -107,6 +108,7 @@ const Home = () => {
         flag={true}
         data={products?.filter((n) => n.tag === "popular-product")}
       />
+      {cartShow && <Cart />}
     </Layout>
   );
 };

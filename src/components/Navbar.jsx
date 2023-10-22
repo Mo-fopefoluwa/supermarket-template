@@ -49,9 +49,9 @@ const Navbar = () => {
         </motion.button>
         {open && (
           <motion.div
-            initial={{ translateX: -100 }}
-            animate={{ translateX: 0 }}
-            exit={{ translateX: -100, transitionDuration: 200 }}
+            initial={{ x: -200, opacity: 0.4 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -200 }}
             className={` bg-[#faf9f6] z-30 px-10 py-4 absolute items-center flex flex-col gap-[6rem] h-screen top-[6.5rem] left-0 w-[85%] after:absolute after:w-[24%] after:sm:w-[15%] after:md:w-[12%] after:-right-[5.2rem] after:h-screen after:content after:z-10 after:backdrop-blur-sm`}
           >
             {navs.map((nav) => {
@@ -117,7 +117,7 @@ const Navbar = () => {
       {/* cart and user */}
       <div className="flex flex-row gap-4 md:gap-6 justify-center items-center">
         <motion.span onClick={showCart} whileTap={{ scale: 0.75 }}>
-          <Link className="relative" to={"/cart"}>
+          <div className="relative">
             {cartItems && cartItems.length > 0 && (
               <span className="absolute right-0 top-[-1rem] flex h-[1.4rem] w-[1.4rem]">
                 <span className="relative  font-semibold  inline-flex h-full w-full rounded-full px-[.6rem] py-[.6rem] bg-red-500"></span>
@@ -127,7 +127,7 @@ const Navbar = () => {
               </span>
             )}
             <BiCart className="hover:scale-110 cursor-pointer" size={35} />
-          </Link>
+          </div>
         </motion.span>
 
         <Menu as="div" className="relative  inline-block text-center">
