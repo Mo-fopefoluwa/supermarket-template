@@ -45,7 +45,7 @@ const Cart = () => {
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
-      className="w-80% md:w-[40%] z-[101] bg-[#fafafa] drop-shadow-md h-screen fixed top-[6rem] right-0"
+      className="w-80% md:w-[40%] z-[101] bg-[#fafafa] drop-shadow-md h-screen fixed top-0 right-0"
     >
       <div className="flex justify-between  items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
         <motion.div
