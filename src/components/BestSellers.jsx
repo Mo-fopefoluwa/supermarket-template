@@ -1,12 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { MdShoppingBasket } from "react-icons/md";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 const BestSellers = ({ flag, data, scrollValuee }) => {
+  const [{ cartItems }, dispatch] = useStateValue();
+  const [items, setItems] = useState([]);
   const bestContainer = useRef();
   useEffect(() => {
     bestContainer.current.scrollLeft += scrollValuee;
   }, [scrollValuee]);
+
+  const addtoCart = (item) => {
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: items,
+    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+  useEffect(() => {
+    addtoCart();
+  }, [items]);
+
   return (
     <div
       ref={bestContainer}
@@ -36,6 +52,7 @@ const BestSellers = ({ flag, data, scrollValuee }) => {
                   />
                 </motion.div>
                 <motion.div
+                  onClick={() => setItems([...cartItems, item])}
                   whileTap={{ scale: 0.75 }}
                   className="w-10 h-10 rounded-full bg-[#22305f] flex items-center justify-center cursor-pointer hover:shadow-md"
                 >
