@@ -263,7 +263,7 @@ const NewItem = () => {
                         name="uploadimage"
                         accept="image/*"
                         onChange={uploadImage}
-                        className="w-[100%] absolute invisible top-0 left-0 h-[100%]"
+                        className="w-[100%] absolute top-0 left-0 h-[100%]"
                       />
                     </label>
                   </>
