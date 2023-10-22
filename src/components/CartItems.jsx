@@ -48,10 +48,17 @@ const CartItems = ({ item, setFlag, flag }) => {
     setItems(cartItems);
   }, [qty]);
 
+  const deleteCartItem = () => {
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: cartItems,
+    });
+    localStorage.setItem("cartItems", JSON.stringify([]));
+  };
   return (
     <div>
       <div className="h-[150px] border-b-2 border-b-gray-300 flex flex-row justify-center items-center gap-8">
-        <div className="w-[12%] sm:w-[15%] md:w-[15%] lg:w-[20%] px-4 py-4">
+        <div className="w-[19%] sm:w-[15%] md:w-[15%] lg:w-[20%] px-4 py-4">
           <img className="h-full w-full" src={item?.imageURL} alt="" />
         </div>
         <div className="flex flex-col gap-4 w-[60%]">
@@ -85,7 +92,11 @@ const CartItems = ({ item, setFlag, flag }) => {
         <div className="flex flex-col gap-8 items-end">
           <motion.button whileTap={{ scale: 0.75 }}>
             {" "}
-            <BiTrash className="text-red-600" size={22} />
+            <BiTrash
+              onClick={deleteCartItem(item)}
+              className="text-red-600"
+              size={22}
+            />
           </motion.button>
           <p className="font-bold ">N{parseFloat(item?.price) * qty}</p>
         </div>
