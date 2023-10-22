@@ -92,11 +92,7 @@ const CartItems = ({ item, setFlag, flag }) => {
         <div className="flex flex-col gap-8 items-end">
           <motion.button whileTap={{ scale: 0.75 }}>
             {" "}
-            <BiTrash
-              onClick={deleteCartItem(item)}
-              className="text-red-600"
-              size={22}
-            />
+            <BiTrash className="text-red-600" size={22} />
           </motion.button>
           <p className="font-bold ">N{parseFloat(item?.price) * qty}</p>
         </div>
