@@ -50,8 +50,8 @@ const CartItems = ({ item, setFlag, flag }) => {
 
   return (
     <div>
-      <div className="h-[150px] border-b-2 border-t-2 border-t-gray-300 border-b-gray-300 flex flex-row justify-center items-center gap-8">
-        <div className="w-[%] sm:w-[15%] md:w-[15%] lg:w-[20%] px-4 py-4">
+      <div className="h-[150px] border-b-2 border-b-gray-300 flex flex-row justify-center items-center gap-8">
+        <div className="w-[12%] sm:w-[15%] md:w-[15%] lg:w-[20%] px-4 py-4">
           <img className="h-full w-full" src={item?.imageURL} alt="" />
         </div>
         <div className="flex flex-col gap-4 w-[60%]">

@@ -45,9 +45,9 @@ const Cart = () => {
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
-      className="w-80% md:w-[40%] z-[101] bg-[#fafafa] drop-shadow-md h-screen fixed top-0 right-0"
+      className="w-80% md:w-[40%] z-[101] bg-[#fafafa] flex flex-col gap-2 drop-shadow-md h-screen fixed top-0 right-0"
     >
-      <div className="flex justify-between  items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
+      <div className="flex justify-between  items-center flex-row pt-6 md:pt-[4rem] px-4 md:px-8 lg:px-12">
         <motion.div
           onClick={showCart}
           whileTap={{ scale: 0.7 }}
@@ -69,7 +69,7 @@ const Cart = () => {
 
       {cartItems && cartItems.length > 0 ? (
         <>
-          <div className=" flex flex-col justify-center pt-[4rem] items-center w-full h-full bg-[#fafafa] rounded-t-[2rem] ">
+          <div className=" flex flex-col justify-center pt-6 md:pt-[4rem] items-center w-full bg-[#fafafa] rounded-t-[2rem] ">
             <div className="w-full h-[340px] md:h-[420px] px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
               {cartItems &&
                 cartItems.map((item) => {
@@ -84,7 +84,7 @@ const Cart = () => {
                 })}
             </div>
           </div>
-          <div className="mt-8  flex justify-center items-center  py-8">
+          <div className="mt-2  flex justify-center items-center ">
             <div className="w-[90vw] md:w-[70vw] lg:w-[50vw] px-4">
               <dl className="space-y-0.5 ">
                 <div className="flex justify-between pb-4">
