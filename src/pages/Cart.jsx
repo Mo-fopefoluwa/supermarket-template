@@ -45,7 +45,7 @@ const Cart = () => {
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
-      className="w-80% md:w-[40%] z-[101] drop-shadow-md h-screen fixed top-[6rem] right-0"
+      className="w-80% md:w-[40%] z-[101] bg-[#fafafa] drop-shadow-md h-screen fixed top-[6rem] right-0"
     >
       <div className="flex justify-between  items-center flex-row pt-[4rem] px-4 md:px-8 lg:px-12">
         <motion.div
@@ -69,8 +69,8 @@ const Cart = () => {
 
       {cartItems && cartItems.length > 0 ? (
         <>
-          <div className=" flex justify-center pt-[4rem] items-center">
-            <div className="w-[90vw] md:w-[70vw] lg:w-[50vw]">
+          <div className=" flex flex-col justify-center pt-[4rem] items-center w-full h-full bg-[#fafafa] rounded-t-[2rem] ">
+            <div className="w-full h-[340px] md:h-[420px] px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
               {cartItems &&
                 cartItems.map((item) => {
                   return (
